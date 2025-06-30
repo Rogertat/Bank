@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Xera Bank  </title>
+	
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2a5298;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: #1e3c72;
+        }
+
+        .contact-details h3 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #666;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .hours-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .hours-card h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+		
+		    </style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ <script>
+ 
+  window.adobeDataLayer = window.adobeDataLayer || [];
+
+if(localStorage.getItem('buttonclick')){
+var a = 0;
+    if(a === 0){
+        adobeDataLayer.push({
+           'event' : 'Internal Campaign Clicks',
+            'CTA' : {
+                
+                'name' : localStorage.getItem('buttonclick'),
+				'category' : localStorage.getItem('category'),
+                'title' : localStorage.getItem('title'),
+               'slot' : localStorage.getItem('slot')
+            }
+        })
+        a = 1;
+		localStorage.removeItem('category');
+        localStorage.removeItem('buttonclick');
+        localStorage.removeItem('title');
+        localStorage.removeItem('slot');
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. Push saved CTA click if exists
+ 
+$('.nav-links a').on('click',function(){
+    localStorage.setItem('buttonclick',$(this).text().trim())
+    localStorage.setItem('category','Header');
+    localStorage.setItem('title','Header');
+    localStorage.setItem('slot','N/A');
+})
+$('.btn-primary, .btn-secondary').on('click',function(){
+    localStorage.setItem('buttonclick',$(this).text().trim())
+    localStorage.setItem('category','Banner');
+    localStorage.setItem('title',$(this).closest('.banner-content').find('h1').text().trim());
+    localStorage.setItem('slot',$(this).closest('div.slide').find('img').attr('alt'));
+})
+$('button.btn').on('click',function(){
+    localStorage.setItem('buttonclick',$(this).text().trim())
+    localStorage.setItem('category','Buttons');
+    localStorage.setItem('title',$(this).closest('.service-card').find('h3').text().trim());
+    localStorage.setItem('slot','N/A');
+})
+});
+
+ 
+  document.addEventListener("DOMContentLoaded", function () {
+    // 1. Dynamically get the form name from the page header
+    var formName = document.querySelector('.page-header h1')?.textContent.trim() || "Unknown Form";
+
+    // 2. Store in localStorage (optional if needed elsewhere)
+    localStorage.setItem('formname', formName);
+
+    // 3. Push formLoad event
+    window.adobeDataLayer.push({
+      event: "Form Load",
+      "form": {
+        "name": formName,
+        "category": "Load",
+		"applicationStatus": "Completed"
+      }
+    });
+
+
+  });
+
+// Push pageLoad event
+window.adobeDataLayer.push({
+ "event": "Page Load",
+"pageInfo": {
+"name": document.title,
+"url": location.href,
+"applicationStatus": "Test"
+  }
+});
+</script>
+<script src="https://assets.adobedtm.com/4fa03d1212c6/cca5bbda2c1b/launch-f19db5e47073-development.min.js" async></script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Xera Bank  </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>Contact Us</h1>
+	  
+      <p>We're here to help with all your banking needs. Get in touch with us today.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-form">
+        <h2>Send us a Message</h2>
+        <!-- Added novalidate and error message spans -->
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error-msg" id="nameError"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error-msg" id="emailError"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+            <span class="error-msg" id="phoneError"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a topic</option>
+              <option value="account">Account Questions</option>
+              <option value="loans">Loans &amp; Mortgages</option>
+              <option value="cards">Credit Cards</option>
+              <option value="online">Online Banking</option>
+              <option value="complaint">File a Complaint</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="error-msg" id="subjectError"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Please describe how we can help you..." required></textarea>
+            <span class="error-msg" id="messageError"></span>
+          </div>
+          
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-details">
+            <h3>Phone</h3>
+            <p>Customer Service: (555) 123-4567</p>
+            <p>24/7 Support: (555) 123-4568</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-details">
+            <h3>Email</h3>
+            <p>support@analyticsbank.com</p>
+            <p>info@analyticsbank.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-details">
+            <h3>Address</h3>
+            <p>123 Banking Street</p>
+            <p>Financial District, NY 10001</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div class="contact-details">
+            <h3>Live Chat</h3>
+            <p>Available 24/7 through online banking</p>
+           <!-- <button onclick="startChat()" style="background: #1e3c72; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 0.5rem;">Start Chat</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hours-grid">
+      <div class="hours-card">
+        <h3>Branch Hours</h3>
+        <ul class="hours-list">
+          <li><span>Monday - Friday</span><span>9:00 AM - 5:00 PM</span></li>
+          <li><span>Saturday</span><span>9:00 AM - 2:00 PM</span></li>
+          <li><span>Sunday</span><span>Closed</span></li>
+        </ul>
+      </div>
+
+      <div class="hours-card">
+        <h3>Customer Service</h3>
+        <ul class="hours-list">
+          <li><span>Monday - Friday</span><span>7:00 AM - 10:00 PM</span></li>
+          <li><span>Saturday</span><span>8:00 AM - 8:00 PM</span></li>
+          <li><span>Sunday</span><span>9:00 AM - 6:00 PM</span></li>
+          <li><span>Emergency Support</span><span>24/7</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Xera Bank  . All rights reserved. | FDIC Insured | Equal Housing Lender</p>
+        </div>
+    </footer>
+
+    <script>
+	
+	
+  function performSearch() {
+    const searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+
+    // Mapping of keywords to page names
+    const pageMap = {
+      "home": "index.html",
+      "services": "services.html",
+      "account": "account.html",
+      "contact": "contact.html",
+      "login": "login.html"
+    };
+
+    // Check if search term matches any key
+    if (searchTerm && pageMap[searchTerm]) {
+      window.location.href = `${pageMap[searchTerm]}?search=${encodeURIComponent(searchTerm)}`;
+
+    } else if (searchTerm) {
+      // Show no result message
+      alert(`No results found for: "${searchTerm}"`);
+
+      // Push to adobeDataLayer
+      window.adobeDataLayer.push({
+        event: "searcheswithoutResult",
+        searches: {
+          withoutResult: searchTerm
+        }
+      });
+    }
+  }
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get("search");
+
+    if (searchTerm) {
+      const pageText = document.body.innerText.toLowerCase();
+      const found = pageText.includes(searchTerm.toLowerCase());
+
+      if (found) {
+        window.adobeDataLayer.push({
+          event: "searcheswithResult",
+          searches: {
+            withResult: searchTerm
+          }
+        });
+      }
+    }
+  });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            if (name && email && subject && message) {
+                alert(`Thank you, ${name}! Your message has been sent successfully. We'll get back to you within 24 hours at ${email}.`);
+                this.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        function startChat() {
+            alert('Live chat feature would open here. In a real application, this would connect you to a customer service representative.');
+        }
+
+        // Add form validation and visual feedback
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#dc3545';
+                } else {
+                    this.style.borderColor = '#28a745';
+                }
+            });
+
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#1e3c72';
+            });
+        });
+
+        // Add animation effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.contact-form, .contact-info, .hours-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s, transform 0.6s';
+                observer.observe(card);
+            });
+        });
+//Form Load Datalayer		
+
+ 
+ 
+
+
+    </script>
+</body>
+</html>
