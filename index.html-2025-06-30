@@ -259,10 +259,10 @@ if(localStorage.getItem('buttonclick')){
 var a = 0;
     if(a === 0){
         adobeDataLayer.push({
-            'event' : 'internalcampaignClick',
-            'internalCampaign' : {
+            'event' : 'Internal Campaign Clicks',
+            'CTA' : {
                 
-                'ctatext' : localStorage.getItem('buttonclick'),
+                'name' : localStorage.getItem('buttonclick'),
 				'category' : localStorage.getItem('category'),
                 'title' : localStorage.getItem('title'),
                'slot' : localStorage.getItem('slot')
@@ -323,7 +323,7 @@ $('button.btn').on('click',function(){
 
 // Push pageLoad event
 window.adobeDataLayer.push({
- "event": "PageLoad",
+ "event": "Page Load",
 "pageInfo": {
 "name": document.title,
 "url": location.href,
@@ -341,9 +341,7 @@ window.adobeDataLayer.push({
       <div class="logo">Xera Bank </div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="account.html">Account</a></li>
-        <li><a href="contact.html">Contact</a></li>
+               <li><a href="contact.html">Contact</a></li>
         
       </ul>
       <div class="search-container">
@@ -362,8 +360,8 @@ window.adobeDataLayer.push({
           <h1>Welcome to Xera Bank </h1>
           <p>Your trusted partner for all banking needs.</p>
           <div class="cta-buttons">
-            <a href="account.html" class="btn btn-primary">Get Started</a>
-            <a href="services.html" class="btn btn-secondary">Learn More</a>
+            <a href="contact.html" class="btn btn-primary">Get Started</a>
+            <a href="contact.html" class="btn btn-secondary">Find Out More</a>
           </div>
         </div>
       </div>
@@ -373,7 +371,7 @@ window.adobeDataLayer.push({
           <h1>Grow with Confidence</h1>
           <p>Business banking made easy for your enterprise needs.</p>
           <div class="cta-buttons">
-            <a href="services.html" class="btn btn-primary">Explore Business</a>
+            <a href="contact.html" class="btn btn-primary">Explore Business</a>
             <a href="contact.html" class="btn btn-secondary">Talk to Us</a>
           </div>
         </div>
@@ -384,8 +382,8 @@ window.adobeDataLayer.push({
           <h1>Plan Your Future</h1>
           <p>Invest smartly with Xera Bank ’s advisory services.</p>
           <div class="cta-buttons">
-            <a href="services.html" class="btn btn-primary">View Plans</a>
-            <a href="account.html" class="btn btn-secondary">Open Account</a>
+            <a href="contact.html" class="btn btn-primary">View Plans</a>
+            <a href="contact.html" class="btn btn-secondary">Open Account</a>
           </div>
         </div>
       </div>
@@ -408,7 +406,7 @@ window.adobeDataLayer.push({
           <div class="service-icon">💳</div>
           <h3>Personal Banking</h3>
           <p>Tailored solutions to meet your personal financial goals.</p>
-<button class="btn" onclick="window.open('account.html', '_blank')">Learn More</button>
+<button class="btn" onclick="window.open('contact.html', '_blank')">Learn More</button>
 
 
 		  
@@ -418,21 +416,21 @@ window.adobeDataLayer.push({
           <div class="service-icon">🏢</div>
           <h3>Business Banking</h3>
           <p>Powerful tools and services to support your business.</p>
-		  <button class="btn" onclick="window.open('services.html', '_blank')">Learn More</button>
+		  <button class="btn" onclick="window.open('contact.html', '_blank')">Learn More</button>
 
         </div>
         <div class="service-card">
           <div class="service-icon">💰</div>
           <h3>Loans & Mortgages</h3>
           <p>Flexible terms and great rates for your financing needs.</p>
-		 <button class="btn" onclick="window.open('account.html', '_blank')">Learn More</button>
+		 <button class="btn" onclick="window.open('contact.html', '_blank')">Learn More</button>
 
         </div>
         <div class="service-card">
           <div class="service-icon">📈</div>
           <h3>Investment Services</h3>
           <p>Expert advice to grow and protect your wealth.</p>
-		  <button class="btn" onclick="window.open('services.html', '_blank')">Learn More</button>
+		  <button class="btn" onclick="window.open('contact.html', '_blank')">Learn More</button>
 
         </div>
       </div>

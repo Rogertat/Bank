@@ -246,34 +246,22 @@
  <script>
  
   window.adobeDataLayer = window.adobeDataLayer || [];
-   var formName = 'Contact Us form';
-
-    // 2. Store in localStorage (optional if needed elsewhere)
-    localStorage.setItem('formname', formName);
-  adobeDataLayer.push({
-      event: "formLoad",
-      "form": {
-        "name": formName,
-        "category": "Load",
-		"applicationStatus": "Completed"
-      }
-    });
 
 if(localStorage.getItem('buttonclick')){
 var a = 0;
     if(a === 0){
         adobeDataLayer.push({
-            'event' : 'internalcampaignClick',
-            'internalCampaign' : {
+           'event' : 'Internal Campaign Clicks',
+            'CTA' : {
                 
-                'ctatext' : localStorage.getItem('buttonclick'),
+                'name' : localStorage.getItem('buttonclick'),
 				'category' : localStorage.getItem('category'),
                 'title' : localStorage.getItem('title'),
                'slot' : localStorage.getItem('slot')
             }
         })
         a = 1;
-		 localStorage.removeItem('category');
+		localStorage.removeItem('category');
         localStorage.removeItem('buttonclick');
         localStorage.removeItem('title');
         localStorage.removeItem('slot');
@@ -302,34 +290,31 @@ $('button.btn').on('click',function(){
     localStorage.setItem('slot','N/A');
 })
 });
+
  
   document.addEventListener("DOMContentLoaded", function () {
     // 1. Dynamically get the form name from the page header
-   
+    var formName = document.querySelector('.page-header h1')?.textContent.trim() || "Unknown Form";
+
+    // 2. Store in localStorage (optional if needed elsewhere)
+    localStorage.setItem('formname', formName);
 
     // 3. Push formLoad event
-    
+    window.adobeDataLayer.push({
+      event: "Form Load",
+      "form": {
+        "name": formName,
+        "category": "Load",
+		"applicationStatus": "Completed"
+      }
+    });
 
-    // 4. Track formStart on first field focus
-    const form = document.getElementById("contactForm");
-    if (form) {
-      const formFields = form.querySelectorAll("input, textarea, select");
 
-      let hasFocusedOnce = false;
-
-      formFields.forEach(function (field) {
-        field.addEventListener("focus", function () {
-          if (!hasFocusedOnce) {
-            hasFocusedOnce = true;
-          }
-        });
-      });
-    }
   });
 
 // Push pageLoad event
 window.adobeDataLayer.push({
- "event": "PageLoad",
+ "event": "Page Load",
 "pageInfo": {
 "name": document.title,
 "url": location.href,
@@ -345,9 +330,7 @@ window.adobeDataLayer.push({
             <div class="logo">Xera Bank  </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="account.html">Account</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="contact.html">Contact</a></li>
                 
             </ul>
         </nav>

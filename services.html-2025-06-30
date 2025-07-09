@@ -224,24 +224,25 @@
         }
     </style>
 	  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script>
+  <script>
+
   window.adobeDataLayer = window.adobeDataLayer || [];
 
 if(localStorage.getItem('buttonclick')){
 var a = 0;
     if(a === 0){
         adobeDataLayer.push({
-            'event' : 'internalcampaignClick',
-            'internalCampaign' : {
+ 'event' : 'Internal Campaign Clicks',
+            'CTA' : {
                 
-                'ctatext' : localStorage.getItem('buttonclick'),
+                'name' : localStorage.getItem('buttonclick'),
 				'category' : localStorage.getItem('category'),
                 'title' : localStorage.getItem('title'),
                'slot' : localStorage.getItem('slot')
             }
         })
         a = 1;
-		 localStorage.removeItem('category');
+		localStorage.removeItem('category');
         localStorage.removeItem('buttonclick');
         localStorage.removeItem('title');
         localStorage.removeItem('slot');
@@ -270,39 +271,19 @@ $('button.btn').on('click',function(){
     localStorage.setItem('slot','N/A');
 })
 });
-
-//Search Function withresult
-  document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchTerm = urlParams.get("search");
-
-    if (searchTerm) {
-      const pageText = document.body.innerText.toLowerCase();
-      const found = pageText.includes(searchTerm.toLowerCase());
-
-      if (found) {
-        window.adobeDataLayer.push({
-          event: "searcheswithResult",
-          searches: {
-            withResult: searchTerm
-          }
-        });
-      }
-    }
-  });
+  
 // Ensure adobeDataLayer exists
 
 
 // Push pageLoad event
 window.adobeDataLayer.push({
- "event": "PageLoad",
+ "event": "Page Load",
 "pageInfo": {
 "name": document.title,
 "url": location.href,
 "applicationStatus": "Test"
   }
 });
-
 
   </script>
 <script src="https://assets.adobedtm.com/4fa03d1212c6/cca5bbda2c1b/launch-f19db5e47073-development.min.js" async></script>
