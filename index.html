@@ -332,8 +332,96 @@ window.adobeDataLayer.push({
 });
 
 
+window.dataLayer = window.dataLayer || [];
+
+if(localStorage.getItem('buttonclick')){
+var a = 0;
+    if(a === 0){
+        dataLayer.push({
+            'event' : 'internalcampaignClick',
+            'internalCampaign' : {
+                
+                'ctatext' : localStorage.getItem('buttonclick'),
+				'category' : localStorage.getItem('category'),
+                'title' : localStorage.getItem('title'),
+               'slot' : localStorage.getItem('slot')
+            }
+        })
+        a = 1;
+		 localStorage.removeItem('category');
+        localStorage.removeItem('buttonclick');
+        localStorage.removeItem('title');
+        localStorage.removeItem('slot');
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. Push saved CTA click if exists
+ 
+$('.nav-links a').on('click',function(){
+    localStorage.setItem('buttonclick',$(this).text().trim())
+    localStorage.setItem('category','Header');
+    localStorage.setItem('title','Header');
+    localStorage.setItem('slot','N/A');
+})
+$('.btn-primary, .btn-secondary').on('click',function(){
+    localStorage.setItem('buttonclick',$(this).text().trim())
+    localStorage.setItem('category','Banner');
+    localStorage.setItem('title',$(this).closest('.banner-content').find('h1').text().trim());
+    localStorage.setItem('slot',$(this).closest('div.slide').find('img').attr('alt'));
+})
+$('button.btn').on('click',function(){
+    localStorage.setItem('buttonclick',$(this).text().trim())
+    localStorage.setItem('category','Buttons');
+    localStorage.setItem('title',$(this).closest('.service-card').find('h3').text().trim());
+    localStorage.setItem('slot','N/A');
+})
+});
+
+//Search Function withresult
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get("search");
+
+    if (searchTerm) {
+      const pageText = document.body.innerText.toLowerCase();
+      const found = pageText.includes(searchTerm.toLowerCase());
+
+      if (found) {
+        window.dataLayer.push({
+          event: "searcheswithResult",
+          searches: {
+            withResult: searchTerm
+          }
+        });
+      }
+    }
+  });
+// Ensure adobeDataLayer exists
+
+
+// Push pageLoad event
+window.dataLayer.push({
+ "event": "pageLoad",
+"pageInfo": {
+"name": document.title,
+"url": location.href,
+"applicationStatus": "Test"
+  }
+});
+
+
   </script>
-<script src="https://assets.adobedtm.com/4fa03d1212c6/54690cbb7bf6/launch-d01ce5bef874-development.min.js" async></script>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MZ98B6J5');</script>
+  <!-- End Google Tag Manager -->
+  
+  <script src="https://assets.adobedtm.com/4fa03d1212c6/baaa4d6a71f1/launch-67a725a2616e-development.min.js" async></script>
   </head>
 <body>
   <header>
