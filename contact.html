@@ -599,8 +599,8 @@ function performSearch() {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-document.getElementById("contactForm").addEventListener("submit", function(e){
-  
+document.getElementById("contactForm").addEventListener("click", function(e){
+  e.preventDefault();
 
   var isValid = true;
 
