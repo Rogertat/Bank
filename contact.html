@@ -293,6 +293,13 @@
   window.dataLayer = window.dataLayer || [];
    var formName = 'Contact Us form';
 
+   var ab = 0;
+   var fdname;
+
+$(document).on('focusin','#contactForm',function(){
+fdname= $(this).closest('.form-group').find('label').text();
+});
+
     // 2. Store in localStorage (optional if needed elsewhere)
     localStorage.setItem('formname', formName);
   adobeDataLayer.push({
@@ -300,7 +307,7 @@
       "form": {
         "name": formName,
         "category": "Load",
-		"applicationStatus": "Completed"
+		"applicationStatus": "Pending"
       }
     });
     dataLayer.push({
@@ -308,7 +315,7 @@
       "form": {
         "name": formName,
         "category": "Load",
-		"applicationStatus": "Completed"
+		"applicationStatus": "Pending"
       }
     });
 
@@ -410,6 +417,15 @@ $(document).one('focusin','#contactForm',function(){
 		"applicationStatus": "Completed"
       }
     });
+    dataLayer.push({
+      event: "formStart",
+      "form": {
+        "name": formName,
+        "category": "Start",
+		"applicationStatus": "Completed"
+      }
+    });
+    a = 1;
 });
 
 
@@ -506,16 +522,280 @@ window.dataLayer.push({
 });
 
 
-$(document).one('focusin','#contactForm',function(){
+// $(document).one('focusin','#contactForm',function(){
+//     dataLayer.push({
+//       event: "formStart",
+//       "form": {
+//         "name": formName,
+//         "category": "Start",
+// 		"applicationStatus": "Completed"
+//       }
+//     });
+//     a =1;
+// });
+
+
+function performSearch() {
+    const searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+
+    // Mapping of keywords to page names
+    const pageMap = {
+      "home": "index.html",
+      "services": "services.html",
+      "account": "account.html",
+      "contact": "contact.html",
+      "login": "login.html"
+    };
+
+    // Check if search term matches any key
+    if (searchTerm && pageMap[searchTerm]) {
+      window.location.href = `${pageMap[searchTerm]}?search=${encodeURIComponent(searchTerm)}`;
+
+    } else if (searchTerm) {
+      // Show no result message
+      alert(`No results found for: "${searchTerm}"`);
+
+      // Push to adobeDataLayer
+      window.adobeDataLayer.push({
+        event: "searcheswithoutResult",
+        searches: {
+          withoutResult: searchTerm
+        }
+      }); 
+      dataLayer.push({
+        event: "searcheswithoutResult",
+        searches: {
+          withoutResult: searchTerm
+        }
+      });
+    }
+  }
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get("search");
+
+    if (searchTerm) {
+      const pageText = document.body.innerText.toLowerCase();
+      const found = pageText.includes(searchTerm.toLowerCase());
+
+      if (found) {
+        window.adobeDataLayer.push({
+          event: "searcheswithResult",
+          searches: {
+            withResult: searchTerm
+          }
+        });
+        dataLayer.push({
+          event: "searcheswithResult",
+          searches: {
+            withResult: searchTerm
+          }
+        });
+      }
+    }
+  });
+
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  var isValid = true;
+
+  var name = document.getElementById("name");
+  var email = document.getElementById("email");
+  var phone = document.getElementById("phone");
+  var subject = document.getElementById("subject");
+  var message = document.getElementById("message");
+
+  // RESET
+  var errors = document.querySelectorAll(".error-msg");
+  for(var i=0;i<errors.length;i++){
+    errors[i].innerText = "";
+  }
+
+  var fields = document.querySelectorAll("input, select, textarea");
+  for(var j=0;j<fields.length;j++){
+    fields[j].classList.remove("input-error","input-success");
+  }
+
+  // NAME
+  if(!name.value.trim()){
+    document.getElementById("nameError").innerText = "Name is required";
+    name.classList.add("input-error");
+    isValid = false;
+  } else {
+    name.classList.add("input-success");
+  }
+
+  // EMAIL
+  var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if(!email.value.trim()){
+    emailError.innerText = "Email is required";
+    email.classList.add("input-error");
+    isValid = false;
+  } else if(!emailPattern.test(email.value)){
+    emailError.innerText = "Enter valid email";
+    email.classList.add("input-error");
+    isValid = false;
+  } else {
+    email.classList.add("input-success");
+  }
+
+  // PHONE (optional but validate if entered)
+  var phonePattern = /^[0-9]{10}$/;
+  if(phone.value && !phonePattern.test(phone.value)){
+    phoneError.innerText = "Enter valid 10 digit phone number";
+    phone.classList.add("input-error");
+    isValid = false;
+  } else if(phone.value){
+    phone.classList.add("input-success");
+  }
+
+  // SUBJECT
+  if(!subject.value){
+    subjectError.innerText = "Please select a subject";
+    subject.classList.add("input-error");
+    isValid = false;
+  } else {
+    subject.classList.add("input-success");
+  }
+
+  // MESSAGE
+  if(!message.value.trim()){
+    messageError.innerText = "Message is required";
+    message.classList.add("input-error");
+    isValid = false;
+  } else {
+    message.classList.add("input-success");
+  }
+
+  // SUCCESS
+  if(isValid){
+    document.getElementById("thankYouPopup").style.display = "flex";
+    adobeDataLayer.push({
+event: "formComplete",
+"form": {
+"name": "Contact Us Form",
+"category": "Completion",
+"applicationStatus": "Completed"
+}
+});
     dataLayer.push({
-      event: "formStart",
+      event: "formComplete",
       "form": {
-        "name": formName,
-        "category": "Start",
-		"applicationStatus": "Completed"
+        "name": "Contact Us Form",
+        "category": "Completion",
+        "applicationStatus": "Completed"
       }
     });
+    this.reset();
+  }
+
 });
+
+document.addEventListener('click',function(event){
+if(event.target.matches('.btn[type="submit"]')){
+var a = setInterval(function(){
+if(document.querySelector('.error-msg')){
+adobeDataLayer.push({
+"event": "formValidationError",
+"form": {
+"name": "Contact us Form",
+"category": "Form Validation",
+"applicationStatus": "Pending",
+"fieldAbandonment": "",
+"validationError": document.querySelector('.error-msg').textContent
+}
+});
+dataLayer.push({
+  event: "formValidationError",
+  "form": {
+    "name": "Contact us Form",
+    "category": "Form Validation",
+    "applicationStatus": "Pending",
+    "fieldAbandonment": "",
+    "validationError": document.querySelector('.error-msg').textContent
+  }
+});
+clearInterval(a);
+}
+},100)
+}
+})
+
+
+function closePopup(){
+  document.getElementById("thankYouPopup").style.display = "none";
+}
+
+        function startChat() {
+            alert('Live chat feature would open here. In a real application, this would connect you to a customer service representative.');
+        }
+
+        // Add form validation and visual feedback
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#dc3545';
+                } else {
+                    this.style.borderColor = '#28a745';
+                }
+            });
+
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#1e3c72';
+            });
+        });
+
+        // Add animation effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.contact-form, .contact-info, .hours-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s, transform 0.6s';
+                observer.observe(card);
+            });
+        });
+//Form Load Datalayer		
+
+window.addEventListener('beforeunload',function(){
+if(ab === 1){
+adobeDataLayer.push({
+"event": "formAbandonment",
+"form": {
+"name": "Contact us Form",
+"category": "Abandonment",
+"applicationStatus": "Not Completed",
+"fieldAbandonment": fdname,
+"validationError": ""
+}
+}); 
+dataLayer.push({
+  event: "formAbandonment",
+  "form": {
+    "name": "Contact us Form",
+    "category": "Abandonment",
+    "applicationStatus": "Not Completed",
+    "fieldAbandonment": fdname,
+    "validationError": ""
+  }
+});
+}
+})
 
 </script>
 
@@ -730,214 +1010,6 @@ $(document).one('focusin','#contactForm',function(){
     <script>
 	
 	
-  function performSearch() {
-    const searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
-
-    // Mapping of keywords to page names
-    const pageMap = {
-      "home": "index.html",
-      "services": "services.html",
-      "account": "account.html",
-      "contact": "contact.html",
-      "login": "login.html"
-    };
-
-    // Check if search term matches any key
-    if (searchTerm && pageMap[searchTerm]) {
-      window.location.href = `${pageMap[searchTerm]}?search=${encodeURIComponent(searchTerm)}`;
-
-    } else if (searchTerm) {
-      // Show no result message
-      alert(`No results found for: "${searchTerm}"`);
-
-      // Push to adobeDataLayer
-      window.adobeDataLayer.push({
-        event: "searcheswithoutResult",
-        searches: {
-          withoutResult: searchTerm
-        }
-      });
-    }
-  }
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchTerm = urlParams.get("search");
-
-    if (searchTerm) {
-      const pageText = document.body.innerText.toLowerCase();
-      const found = pageText.includes(searchTerm.toLowerCase());
-
-      if (found) {
-        window.adobeDataLayer.push({
-          event: "searcheswithResult",
-          searches: {
-            withResult: searchTerm
-          }
-        });
-      }
-    }
-  });
-
-
-document.getElementById("contactForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  var isValid = true;
-
-  var name = document.getElementById("name");
-  var email = document.getElementById("email");
-  var phone = document.getElementById("phone");
-  var subject = document.getElementById("subject");
-  var message = document.getElementById("message");
-
-  // RESET
-  var errors = document.querySelectorAll(".error-msg");
-  for(var i=0;i<errors.length;i++){
-    errors[i].innerText = "";
-  }
-
-  var fields = document.querySelectorAll("input, select, textarea");
-  for(var j=0;j<fields.length;j++){
-    fields[j].classList.remove("input-error","input-success");
-  }
-
-  // NAME
-  if(!name.value.trim()){
-    document.getElementById("nameError").innerText = "Name is required";
-    name.classList.add("input-error");
-    isValid = false;
-  } else {
-    name.classList.add("input-success");
-  }
-
-  // EMAIL
-  var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if(!email.value.trim()){
-    emailError.innerText = "Email is required";
-    email.classList.add("input-error");
-    isValid = false;
-  } else if(!emailPattern.test(email.value)){
-    emailError.innerText = "Enter valid email";
-    email.classList.add("input-error");
-    isValid = false;
-  } else {
-    email.classList.add("input-success");
-  }
-
-  // PHONE (optional but validate if entered)
-  var phonePattern = /^[0-9]{10}$/;
-  if(phone.value && !phonePattern.test(phone.value)){
-    phoneError.innerText = "Enter valid 10 digit phone number";
-    phone.classList.add("input-error");
-    isValid = false;
-  } else if(phone.value){
-    phone.classList.add("input-success");
-  }
-
-  // SUBJECT
-  if(!subject.value){
-    subjectError.innerText = "Please select a subject";
-    subject.classList.add("input-error");
-    isValid = false;
-  } else {
-    subject.classList.add("input-success");
-  }
-
-  // MESSAGE
-  if(!message.value.trim()){
-    messageError.innerText = "Message is required";
-    message.classList.add("input-error");
-    isValid = false;
-  } else {
-    message.classList.add("input-success");
-  }
-
-  // SUCCESS
-  if(isValid){
-    document.getElementById("thankYouPopup").style.display = "flex";
-    adobeDataLayer.push({
-event: "formComplete",
-"form": {
-"name": "Contact Us Form",
-"category": "Load",
-"applicationStatus": "Completed"
-}
-});
-    this.reset();
-  }
-
-});
-
-document.addEventListener('click',function(event){
-if(event.target.matches('.btn[type="submit"]')){
-var a = setInterval(function(){
-if(document.querySelector('.error-msg')){
-adobeDataLayer.push({
-"event": "formValidationError",
-"form": {
-"name": "Contact us Form",
-"category": "Form Validation",
-"applicationStatus": "Pending",
-"fieldAbandonment": "",
-"validationError": document.querySelector('.error-msg').textContent
-}
-});
-clearInterval(a);
-}
-},100)
-}
-})
-
-
-function closePopup(){
-  document.getElementById("thankYouPopup").style.display = "none";
-}
-
-        function startChat() {
-            alert('Live chat feature would open here. In a real application, this would connect you to a customer service representative.');
-        }
-
-        // Add form validation and visual feedback
-        const inputs = document.querySelectorAll('input, select, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                if (this.hasAttribute('required') && !this.value.trim()) {
-                    this.style.borderColor = '#dc3545';
-                } else {
-                    this.style.borderColor = '#28a745';
-                }
-            });
-
-            input.addEventListener('focus', function() {
-                this.style.borderColor = '#1e3c72';
-            });
-        });
-
-        // Add animation effects
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.contact-form, .contact-info, .hours-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s, transform 0.6s';
-                observer.observe(card);
-            });
-        });
-//Form Load Datalayer		
-
- 
  
 
 
