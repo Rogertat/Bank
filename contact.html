@@ -240,6 +240,40 @@
             }
         }
 		
+		
+		.error-msg {
+  color: #dc3545;
+  font-size: 12px;
+}
+
+.input-error {
+  border: 2px solid #dc3545;
+}
+
+.input-success {
+  border: 2px solid #28a745;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+}
+		
 		    </style>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -483,8 +517,68 @@ $(document).one('focusin','#contactForm',function(){
   <!-- End Google Tag Manager -->
   
   <script src="https://assets.adobedtm.com/4fa03d1212c6/baaa4d6a71f1/launch-67a725a2616e-development.min.js" async></script>
+<link id="css-theme" rel="stylesheet" type="text/css" href="/css-theme_e8a4f1b118ff8d52ecc804c33f37fa284b9b8e24.css">
+<script id="scripts" type="text/javascript" src="/scripts_853bb7c935fdebf0c5fe6bc9b19347595f484185.js"></script>
+<meta name="referrer" content="same-origin" />
+
+			<link rel="icon" sizes="16x16" type="image/png" href=/assets/favicon_16.png />
+			<link rel="icon" sizes="32x32" type="image/png" href=/assets/favicon_32.png />
+				<link rel="icon" sizes="any" type="image/svg+xml" href=/assets/favicon.svg />
+<title>Xerago Chat</title><meta name="application-name" content="Xerago Chat"><meta name="apple-mobile-web-app-title" content="Xerago Chat">
+<meta http-equiv="content-language" content=""><meta name="language" content="">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="msvalidate.01" content="">
+<meta name="google-site-verification" content="">
+<meta property="fb:app_id" content="">
+<base href="/">
+<link id="css-theme" rel="stylesheet" type="text/css" href="/css-theme_e8a4f1b118ff8d52ecc804c33f37fa284b9b8e24.css">
+<script id="scripts" type="text/javascript" src="/scripts_853bb7c935fdebf0c5fe6bc9b19347595f484185.js"></script>
+<meta name="referrer" content="same-origin" />
+
+			<link rel="icon" sizes="16x16" type="image/png" href=/assets/favicon_16.png />
+			<link rel="icon" sizes="32x32" type="image/png" href=/assets/favicon_32.png />
+				<link rel="icon" sizes="any" type="image/svg+xml" href=/assets/favicon.svg />
+<title>Xerago Chat</title><meta name="application-name" content="Xerago Chat"><meta name="apple-mobile-web-app-title" content="Xerago Chat">
+<meta http-equiv="content-language" content=""><meta name="language" content="">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="msvalidate.01" content="">
+<meta name="google-site-verification" content="">
+<meta property="fb:app_id" content="">
+<base href="/">
 </head>
 <body>
+
+<noscript style="color: white; text-align:center">
+	You need to enable JavaScript to run this app.
+</noscript>
+<div id="react-root">
+	<div class="page-loading" role="alert" aria-busy="true" aria-live="polite" aria-label="loading">
+		<div class="loading__animation">
+			<div class="loading__animation__bounce"></div>
+			<div class="loading__animation__bounce"></div>
+			<div class="loading__animation__bounce"></div>
+		</div>
+	</div>
+</div>
+
+<style id='css-variables'> :root {}</style>
+
+
+<noscript style="color: white; text-align:center">
+	You need to enable JavaScript to run this app.
+</noscript>
+<div id="react-root">
+	<div class="page-loading" role="alert" aria-busy="true" aria-live="polite" aria-label="loading">
+		<div class="loading__animation">
+			<div class="loading__animation__bounce"></div>
+			<div class="loading__animation__bounce"></div>
+			<div class="loading__animation__bounce"></div>
+		</div>
+	</div>
+</div>
+
+<style id='css-variables'> :root {}</style>
+
     <header>
         <nav class="container">
             <div class="logo">Xera Bank  </div>
@@ -615,6 +709,14 @@ $(document).one('focusin','#contactForm',function(){
       </div>
     </div>
   </div>
+  
+  <div class="popup" id="thankYouPopup">
+  <div class="popup-content">
+    <h2>Thank You!</h2>
+    <p>Your message has been submitted successfully.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+</div>
 </main>
 
     <footer>
@@ -676,22 +778,92 @@ $(document).one('focusin','#contactForm',function(){
     }
   });
 
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            if (name && email && subject && message) {
-                alert(`Thank you, ${name}! Your message has been sent successfully. We'll get back to you within 24 hours at ${email}.`);
-                this.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
-        });
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  var isValid = true;
+
+  var name = document.getElementById("name");
+  var email = document.getElementById("email");
+  var phone = document.getElementById("phone");
+  var subject = document.getElementById("subject");
+  var message = document.getElementById("message");
+
+  // RESET
+  var errors = document.querySelectorAll(".error-msg");
+  for(var i=0;i<errors.length;i++){
+    errors[i].innerText = "";
+  }
+
+  var fields = document.querySelectorAll("input, select, textarea");
+  for(var j=0;j<fields.length;j++){
+    fields[j].classList.remove("input-error","input-success");
+  }
+
+  // NAME
+  if(!name.value.trim()){
+    document.getElementById("nameError").innerText = "Name is required";
+    name.classList.add("input-error");
+    isValid = false;
+  } else {
+    name.classList.add("input-success");
+  }
+
+  // EMAIL
+  var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if(!email.value.trim()){
+    emailError.innerText = "Email is required";
+    email.classList.add("input-error");
+    isValid = false;
+  } else if(!emailPattern.test(email.value)){
+    emailError.innerText = "Enter valid email";
+    email.classList.add("input-error");
+    isValid = false;
+  } else {
+    email.classList.add("input-success");
+  }
+
+  // PHONE (optional but validate if entered)
+  var phonePattern = /^[0-9]{10}$/;
+  if(phone.value && !phonePattern.test(phone.value)){
+    phoneError.innerText = "Enter valid 10 digit phone number";
+    phone.classList.add("input-error");
+    isValid = false;
+  } else if(phone.value){
+    phone.classList.add("input-success");
+  }
+
+  // SUBJECT
+  if(!subject.value){
+    subjectError.innerText = "Please select a subject";
+    subject.classList.add("input-error");
+    isValid = false;
+  } else {
+    subject.classList.add("input-success");
+  }
+
+  // MESSAGE
+  if(!message.value.trim()){
+    messageError.innerText = "Message is required";
+    message.classList.add("input-error");
+    isValid = false;
+  } else {
+    message.classList.add("input-success");
+  }
+
+  // SUCCESS
+  if(isValid){
+    document.getElementById("thankYouPopup").style.display = "flex";
+    this.reset();
+  }
+
+});
+
+
+function closePopup(){
+  document.getElementById("thankYouPopup").style.display = "none";
+}
 
         function startChat() {
             alert('Live chat feature would open here. In a real application, this would connect you to a customer service representative.');
