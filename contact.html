@@ -857,10 +857,38 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
   // SUCCESS
   if(isValid){
     document.getElementById("thankYouPopup").style.display = "flex";
+    adobeDataLayer.push({
+event: "formComplete",
+"form": {
+"name": "Contact Us Form",
+"category": "Load",
+"applicationStatus": "Completed"
+}
+});
     this.reset();
   }
 
 });
+
+document.addEventListener('click',function(event){
+if(event.target.matches('.btn[type="submit"]')){
+var a = setInterval(function(){
+if(document.querySelector('.error-msg')){
+adobeDataLayer.push({
+"event": "formValidationError",
+"form": {
+"name": "Contact us Form",
+"category": "Form Validation",
+"applicationStatus": "Pending",
+"fieldAbandonment": "",
+"validationError": document.querySelector('.error-msg').textContent
+}
+});
+clearInterval(a);
+}
+},100)
+}
+})
 
 
 function closePopup(){
