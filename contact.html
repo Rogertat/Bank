@@ -597,9 +597,10 @@ function performSearch() {
     }
   });
 
+document.addEventListener("DOMContentLoaded", function () {
 
 document.getElementById("contactForm").addEventListener("submit", function(e){
-  e.preventDefault();
+  
 
   var isValid = true;
 
@@ -693,6 +694,7 @@ event: "formComplete",
     this.reset();
   }
 
+});
 });
 
 document.addEventListener('click',function(event){
