@@ -275,6 +275,16 @@
 }
 		
 		    </style>
+
+<script src="https://assets.adobedtm.com/4fa03d1212c6/baaa4d6a71f1/launch-67a725a2616e-development.min.js" async></script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MZ98B6J5');</script>
+  <!-- End Google Tag Manager -->
+
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
  <script>
@@ -381,14 +391,14 @@ $('button.btn').on('click',function(){
   });
 
 // Push pageLoad event
-/*window.adobeDataLayer.push({
+window.adobeDataLayer.push({
  "event": "pageLoad",
 "pageInfo": {
 "name": document.title,
 "url": location.href,
 "applicationStatus": "Test"
   }
-});*/
+});
 
 
 $(document).one('focusin','#contactForm',function(){
@@ -508,15 +518,7 @@ $(document).one('focusin','#contactForm',function(){
 });
 
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MZ98B6J5');</script>
-  <!-- End Google Tag Manager -->
-  
-  <script src="https://assets.adobedtm.com/4fa03d1212c6/baaa4d6a71f1/launch-67a725a2616e-development.min.js" async></script>
+
 <link id="css-theme" rel="stylesheet" type="text/css" href="/css-theme_e8a4f1b118ff8d52ecc804c33f37fa284b9b8e24.css">
 <script id="scripts" type="text/javascript" src="/scripts_853bb7c935fdebf0c5fe6bc9b19347595f484185.js"></script>
 <meta name="referrer" content="same-origin" />
@@ -855,10 +857,38 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
   // SUCCESS
   if(isValid){
     document.getElementById("thankYouPopup").style.display = "flex";
+    adobeDataLayer.push({
+event: "formComplete",
+"form": {
+"name": "Contact Us Form",
+"category": "Load",
+"applicationStatus": "Completed"
+}
+});
     this.reset();
   }
 
 });
+
+document.addEventListener('click',function(event){
+if(event.target.matches('.btn[type="submit"]')){
+var a = setInterval(function(){
+if(document.querySelector('.error-msg')){
+adobeDataLayer.push({
+"event": "formValidationError",
+"form": {
+"name": "Contact us Form",
+"category": "Form Validation",
+"applicationStatus": "Pending",
+"fieldAbandonment": "",
+"validationError": document.querySelector('.error-msg').textContent
+}
+});
+clearInterval(a);
+}
+},100)
+}
+})
 
 
 function closePopup(){
