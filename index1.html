@@ -338,6 +338,46 @@ window.adobeDataLayer.push({
 "applicationStatus": "Test"
   }
 });
+// Service Card Button Click Tracking
+document.addEventListener('click', function(e){
+
+var btn = e.target.closest('.service-card .btn');
+
+if(btn){
+
+    var card = btn.closest('.service-card');
+
+    var title = card.querySelector('h3')
+        ? card.querySelector('h3').innerText.trim()
+        : '';
+
+    var cta = btn.innerText.trim();
+
+    window.dataLayer = window.dataLayer || [];
+
+    dataLayer.push({
+        event: "internalcampaignClick",
+        internalCampaign: {
+            category: "Click",
+            title: title,
+            ctatext: cta,
+            slot: "NA"
+        }
+    });
+
+    window.adobeDataLayer = window.adobeDataLayer || [];
+
+    adobeDataLayer.push({
+        event: "internalcampaignClick",
+        internalCampaign: {
+            category: "Click",
+            title: title,
+            ctatext: cta,
+            slot: "NA"
+        }
+    });
+}
+});
 
 
   </script>
