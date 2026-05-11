@@ -232,9 +232,10 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-MZ98B6J5');</script>
   <!-- End Google Tag Manager -->
- <script>
+  <script>
   window.adobeDataLayer = window.adobeDataLayer || [];
   window.dataLayer = window.dataLayer || [];
+
 if(localStorage.getItem('buttonclick')){
 var a = 0;
     if(a === 0){
@@ -305,7 +306,7 @@ $('button.btn').on('click',function(){
             withResult: searchTerm
           }
         });
-        dataLayer.push({
+        window.dataLayer.push({
           event: "searcheswithResult",
           searches: {
             withResult: searchTerm
@@ -318,14 +319,15 @@ $('button.btn').on('click',function(){
 
 
 // Push pageLoad event
-/*window.adobeDataLayer.push({
+window.adobeDataLayer.push({
  "event": "pageLoad",
 "pageInfo": {
 "name": document.title,
 "url": location.href,
 "applicationStatus": "Test"
   }
-});*/
+});
+
 
 // window.dataLayer = window.dataLayer || [];
 
@@ -405,6 +407,7 @@ window.dataLayer.push({
   }
 });
 
+// Banner CTA Click Tracking
 document.addEventListener('click', function(e){
     var btn = e.target.closest('.cta-buttons a');
 
