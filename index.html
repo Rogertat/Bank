@@ -476,6 +476,42 @@ document.addEventListener('click', function(e){
 });
 
 
+// Search Button Click Tracking
+document.addEventListener('click', function(e){
+    var btn = e.target.closest('.search-btn');
+
+    if(btn){
+        var searchTerm = document.getElementById('searchInput')
+            ? document.getElementById('searchInput').value.trim()
+            : '';
+
+        window.dataLayer = window.dataLayer || [];
+
+        dataLayer.push({
+            event: "internalcampaignClick",
+            internalCampaign: {
+                category: "Search",
+                title: "Header",
+                ctatext: "Search",
+                slot: searchTerm || "NA"
+            }
+        });
+
+        window.adobeDataLayer = window.adobeDataLayer || [];
+
+        adobeDataLayer.push({
+            event: "internalcampaignClick",
+            internalCampaign: {
+                category: "Search",
+                title: "Header",
+                ctatext: "Search",
+                slot: searchTerm || "NA"
+            }
+        });
+    }
+});
+
+
 // Service Card Button Click Tracking
 document.addEventListener('click', function(e){
 
@@ -657,8 +693,14 @@ document.addEventListener('click', function(e){
       // Show no result message
       alert(`No results found for: "${searchTerm}"`);
 
-      // Push to adobeDataLayer
       window.adobeDataLayer.push({
+        event: "searcheswithoutResult",
+        searches: {
+          withoutResult: searchTerm
+        }
+      });
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
         event: "searcheswithoutResult",
         searches: {
           withoutResult: searchTerm
