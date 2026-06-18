@@ -88,6 +88,21 @@
       cursor: pointer;
     }
 
+    .search-no-results {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #fff3cd;
+      color: #856404;
+      text-align: center;
+      padding: 10px 20px;
+      z-index: 999;
+      border-bottom: 1px solid #ffc107;
+      font-size: 0.95rem;
+    }
+
     .carousel-wrapper {
       margin-top: 80px;
       position: relative;
@@ -578,6 +593,7 @@ document.addEventListener('click', function(e){
       </div>
     </nav>
   </header>
+  <div id="searchNoResults" class="search-no-results" role="alert" aria-live="polite"></div>
 
   <!-- Carousel -->
   <div class="carousel-wrapper">
@@ -675,8 +691,22 @@ document.addEventListener('click', function(e){
 
   
 
+  function showSearchNoResults(term) {
+    const el = document.getElementById("searchNoResults");
+    if (el) {
+      el.textContent = `No results found for: "${term}"`;
+      el.style.display = "block";
+    }
+  }
+
+  function hideSearchNoResults() {
+    const el = document.getElementById("searchNoResults");
+    if (el) el.style.display = "none";
+  }
+
   function performSearch() {
-    const searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+    const rawTerm = document.getElementById("searchInput").value.trim();
+    const searchTerm = rawTerm.toLowerCase();
 
     // Mapping of keywords to page names
     const pageMap = {
@@ -687,13 +717,18 @@ document.addEventListener('click', function(e){
       "login": "login.html"
     };
 
+    if (!searchTerm) {
+      hideSearchNoResults();
+      return;
+    }
+
     // Check if search term matches any key
-    if (searchTerm && pageMap[searchTerm]) {
+    if (pageMap[searchTerm]) {
+      hideSearchNoResults();
       window.location.href = `${pageMap[searchTerm]}?search=${encodeURIComponent(searchTerm)}`;
 
-    } else if (searchTerm) {
-      // Show no result message
-      alert(`No results found for: "${searchTerm}"`);
+    } else {
+      showSearchNoResults(rawTerm);
 
       window.adobeDataLayer.push({
         event: "searcheswithoutResult",
@@ -711,6 +746,7 @@ document.addEventListener('click', function(e){
     }
   }
 
+  document.getElementById("searchInput").addEventListener("input", hideSearchNoResults);
 
 
     const slides = document.getElementById('carouselSlides');
