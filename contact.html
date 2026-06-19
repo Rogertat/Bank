@@ -1,281 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Xera Bank  </title>
-	
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #ffd700;
-        }
-
-        /* Main Content */
-        main {
-            padding: 3rem 0;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            color: #1e3c72;
-            margin-bottom: 1rem;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .contact-info {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #1e3c72;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 12px;
-            background: #1e3c72;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: #2a5298;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            margin-right: 1rem;
-            color: #1e3c72;
-        }
-
-        .contact-details h3 {
-            color: #1e3c72;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-details p {
-            color: #666;
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .hours-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .hours-card h3 {
-            color: #1e3c72;
-            margin-bottom: 1rem;
-        }
-
-        .hours-list {
-            list-style: none;
-        }
-
-        .hours-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .hours-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* Footer */
-        footer {
-            background: #1e3c72;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .hours-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-		
-		
-		.error-msg {
-  color: #dc3545;
-  font-size: 12px;
-}
-
-.input-error {
-  border: 2px solid #dc3545;
-}
-
-.input-success {
-  border: 2px solid #28a745;
-}
-
-/* Popup */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-content {
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  text-align: center;
-}
-		
-		    </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -284,781 +11,237 @@
   })(window,document,'script','dataLayer','GTM-MZ98B6J5');</script>
   <!-- End Google Tag Manager -->
   <script src="https://assets.adobedtm.com/4fa03d1212c6/040e774de1b7/launch-7f68937d2e8f-development.min.js" async></script>
-  <!-- Umami Analytics -->
   <script defer src="https://uasdevanalytics.xerago.com/script.js" data-website-id="34a448a0-4b9b-406c-871d-d1c018dc7d09"></script>
-  <!-- End Umami Analytics -->
-
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
- <script>
- 
-  window.adobeDataLayer = window.adobeDataLayer || [];
-  window.dataLayer = window.dataLayer || [];
-   var formName = 'Contact Us form';
-
-   var ab = 0;
-   var fdname;
-
-$(document).on('focusin','#contactForm',function(){
-fdname= $(this).closest('.form-group').find('label').text();
-});
-
-    // 2. Store in localStorage (optional if needed elsewhere)
-    localStorage.setItem('formname', formName);
-  adobeDataLayer.push({
-      event: "formLoad",
-      "form": {
-        "name": formName,
-        "category": "Load",
-		"applicationStatus": "Pending"
-      }
-    });
-    dataLayer.push({
-      event: "formLoad",
-      "form": {
-        "name": formName,
-        "category": "Load",
-		"applicationStatus": "Pending"
-      }
-    });
-
-if(localStorage.getItem('buttonclick')){
-var a = 0;
-    if(a === 0){
-        adobeDataLayer.push({
-            'event' : 'internalcampaignClick',
-            'internalCampaign' : {
-                
-                'ctatext' : localStorage.getItem('buttonclick'),
-				'category' : localStorage.getItem('category'),
-                'title' : localStorage.getItem('title'),
-               'slot' : localStorage.getItem('slot')
-            }
-        })
-        dataLayer.push({
-            'event' : 'internalcampaignClick',
-            'internalCampaign' : {
-                
-                'ctatext' : localStorage.getItem('buttonclick'),
-				'category' : localStorage.getItem('category'),
-                'title' : localStorage.getItem('title'),
-               'slot' : localStorage.getItem('slot')
-            }
-        })
-        a = 1;
-		 localStorage.removeItem('category');
-        localStorage.removeItem('buttonclick');
-        localStorage.removeItem('title');
-        localStorage.removeItem('slot');
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  // 1. Push saved CTA click if exists
- 
-$('.nav-links a').on('click',function(){
-    localStorage.setItem('buttonclick',$(this).text().trim())
-    localStorage.setItem('category','Header');
-    localStorage.setItem('title','Header');
-    localStorage.setItem('slot','N/A');
-})
-$('.btn-primary, .btn-secondary').on('click',function(){
-    localStorage.setItem('buttonclick',$(this).text().trim())
-    localStorage.setItem('category','Banner');
-    localStorage.setItem('title',$(this).closest('.banner-content').find('h1').text().trim());
-    localStorage.setItem('slot',$(this).closest('div.slide').find('img').attr('alt'));
-})
-$('button.btn').on('click',function(){
-    localStorage.setItem('buttonclick',$(this).text().trim())
-    localStorage.setItem('category','Buttons');
-    localStorage.setItem('title',$(this).closest('.service-card').find('h3').text().trim());
-    localStorage.setItem('slot','N/A');
-})
-});
- 
-  document.addEventListener("DOMContentLoaded", function () {
-    // 1. Dynamically get the form name from the page header
-   
-
-    // 3. Push formLoad event
-    
-
-    // 4. Track formStart on first field focus
-    const form = document.getElementById("contactForm");
-    if (form) {
-      const formFields = form.querySelectorAll("input, textarea, select");
-
-      let hasFocusedOnce = false;
-
-      formFields.forEach(function (field) {
-        field.addEventListener("focus", function () {
-          if (!hasFocusedOnce) {
-            hasFocusedOnce = true;
-          }
-        });
-      });
-    }
-  });
-
-// Push pageLoad event
-window.adobeDataLayer.push({
- "event": "pageLoad",
-"pageInfo": {
-"name": document.title,
-"url": location.href,
-"applicationStatus": "Test"
-  }
-});
-
-
-$(document).one('focusin','#contactForm',function(){
-    adobeDataLayer.push({
-      event: "formStart",
-      "form": {
-        "name": formName,
-        "category": "Start",
-		"applicationStatus": "Completed"
-      }
-    });
-    dataLayer.push({
-      event: "formStart",
-      "form": {
-        "name": formName,
-        "category": "Start",
-		"applicationStatus": "Completed"
-      }
-    });
-    a = 1;
-});
-
-
-// window.dataLayer = window.dataLayer || [];
-//    var formName = 'Contact Us form';
-
-//     // 2. Store in localStorage (optional if needed elsewhere)
-//     localStorage.setItem('formname', formName);
-//   dataLayer.push({
-//       event: "formLoad",
-//       "form": {
-//         "name": formName,
-//         "category": "Load",
-// 		"applicationStatus": "Completed"
-//       }
-//     });
-
-// if(localStorage.getItem('buttonclick')){
-// var a = 0;
-//     if(a === 0){
-//         dataLayer.push({
-//             'event' : 'internalcampaignClick',
-//             'internalCampaign' : {
-                
-//                 'ctatext' : localStorage.getItem('buttonclick'),
-// 				'category' : localStorage.getItem('category'),
-//                 'title' : localStorage.getItem('title'),
-//                'slot' : localStorage.getItem('slot')
-//             }
-//         })
-//         a = 1;
-// 		 localStorage.removeItem('category');
-//         localStorage.removeItem('buttonclick');
-//         localStorage.removeItem('title');
-//         localStorage.removeItem('slot');
-//     }
-// }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   // 1. Push saved CTA click if exists
- 
-// $('.nav-links a').on('click',function(){
-//     localStorage.setItem('buttonclick',$(this).text().trim())
-//     localStorage.setItem('category','Header');
-//     localStorage.setItem('title','Header');
-//     localStorage.setItem('slot','N/A');
-// })
-// $('.btn-primary, .btn-secondary').on('click',function(){
-//     localStorage.setItem('buttonclick',$(this).text().trim())
-//     localStorage.setItem('category','Banner');
-//     localStorage.setItem('title',$(this).closest('.banner-content').find('h1').text().trim());
-//     localStorage.setItem('slot',$(this).closest('div.slide').find('img').attr('alt'));
-// })
-// $('button.btn').on('click',function(){
-//     localStorage.setItem('buttonclick',$(this).text().trim())
-//     localStorage.setItem('category','Buttons');
-//     localStorage.setItem('title',$(this).closest('.service-card').find('h3').text().trim());
-//     localStorage.setItem('slot','N/A');
-// })
-// });
- 
-  document.addEventListener("DOMContentLoaded", function () {
-    // 1. Dynamically get the form name from the page header
-   
-
-    // 3. Push formLoad event
-    
-
-    // 4. Track formStart on first field focus
-    const form = document.getElementById("contactForm");
-    if (form) {
-      const formFields = form.querySelectorAll("input, textarea, select");
-
-      let hasFocusedOnce = false;
-
-      formFields.forEach(function (field) {
-        field.addEventListener("focus", function () {
-          if (!hasFocusedOnce) {
-            hasFocusedOnce = true;
-          }
-        });
-      });
-    }
-  });
-
-// Push pageLoad event
-window.dataLayer.push({
- "event": "pageLoad",
-"pageInfo": {
-"name": document.title,
-"url": location.href,
-"applicationStatus": "Test"
-  }
-});
-
-
-// $(document).one('focusin','#contactForm',function(){
-//     dataLayer.push({
-//       event: "formStart",
-//       "form": {
-//         "name": formName,
-//         "category": "Start",
-// 		"applicationStatus": "Completed"
-//       }
-//     });
-//     a =1;
-// });
-
-
-function performSearch() {
-    const searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
-
-    // Mapping of keywords to page names
-    const pageMap = {
-      "home": "index.html",
-      "services": "services.html",
-      "account": "account.html",
-      "contact": "contact.html",
-      "login": "login.html"
-    };
-
-    // Check if search term matches any key
-    if (searchTerm && pageMap[searchTerm]) {
-      window.location.href = `${pageMap[searchTerm]}?search=${encodeURIComponent(searchTerm)}`;
-
-    } else if (searchTerm) {
-      // Show no result message
-      alert(`No results found for: "${searchTerm}"`);
-
-      // Push to adobeDataLayer
-      window.adobeDataLayer.push({
-        event: "searcheswithoutResult",
-        searches: {
-          withoutResult: searchTerm
-        }
-      }); 
-      dataLayer.push({
-        event: "searcheswithoutResult",
-        searches: {
-          withoutResult: searchTerm
-        }
-      });
-    }
-  }
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchTerm = urlParams.get("search");
-
-    if (searchTerm) {
-      const pageText = document.body.innerText.toLowerCase();
-      const found = pageText.includes(searchTerm.toLowerCase());
-
-      if (found) {
-        window.adobeDataLayer.push({
-          event: "searcheswithResult",
-          searches: {
-            withResult: searchTerm
-          }
-        });
-        dataLayer.push({
-          event: "searcheswithResult",
-          searches: {
-            withResult: searchTerm
-          }
-        });
-      }
-    }
-  });
-
-document.addEventListener("DOMContentLoaded", function () {
-
-document.getElementById("contactForm").addEventListener("click", function(e){
-  e.preventDefault();
-
-  var isValid = true;
-
-  var name = document.getElementById("name");
-  var email = document.getElementById("email");
-  var phone = document.getElementById("phone");
-  var subject = document.getElementById("subject");
-  var message = document.getElementById("message");
-
-  // RESET
-  var errors = document.querySelectorAll(".error-msg");
-  for(var i=0;i<errors.length;i++){
-    errors[i].innerText = "";
-  }
-
-  var fields = document.querySelectorAll("input, select, textarea");
-  for(var j=0;j<fields.length;j++){
-    fields[j].classList.remove("input-error","input-success");
-  }
-
-  // NAME
-  if(!name.value.trim()){
-    document.getElementById("nameError").innerText = "Name is required";
-    name.classList.add("input-error");
-    isValid = false;
-  } else {
-    name.classList.add("input-success");
-  }
-
-  // EMAIL
-  var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if(!email.value.trim()){
-    emailError.innerText = "Email is required";
-    email.classList.add("input-error");
-    isValid = false;
-  } else if(!emailPattern.test(email.value)){
-    emailError.innerText = "Enter valid email";
-    email.classList.add("input-error");
-    isValid = false;
-  } else {
-    email.classList.add("input-success");
-  }
-
-  // PHONE (optional but validate if entered)
-  var phonePattern = /^[0-9]{10}$/;
-  if(phone.value && !phonePattern.test(phone.value)){
-    phoneError.innerText = "Enter valid 10 digit phone number";
-    phone.classList.add("input-error");
-    isValid = false;
-  } else if(phone.value){
-    phone.classList.add("input-success");
-  }
-
-  // SUBJECT
-  if(!subject.value){
-    subjectError.innerText = "Please select a subject";
-    subject.classList.add("input-error");
-    isValid = false;
-  } else {
-    subject.classList.add("input-success");
-  }
-
-  // MESSAGE
-  if(!message.value.trim()){
-    messageError.innerText = "Message is required";
-    message.classList.add("input-error");
-    isValid = false;
-  } else {
-    message.classList.add("input-success");
-  }
-
-  // SUCCESS
-  if(isValid){
-    document.getElementById("thankYouPopup").style.display = "flex";
-    adobeDataLayer.push({
-event: "formComplete",
-"form": {
-"name": "Contact Us Form",
-"category": "Completion",
-"applicationStatus": "Completed"
-}
-});
-    dataLayer.push({
-      event: "formComplete",
-      "form": {
-        "name": "Contact Us Form",
-        "category": "Completion",
-        "applicationStatus": "Completed"
-      }
-    });
-    this.reset();
-  }
-
-});
-});
-
-document.addEventListener('click',function(event){
-if(event.target.matches('.btn[type="submit"]')){
-var a = setInterval(function(){
-if(document.querySelector('.error-msg')){
-adobeDataLayer.push({
-"event": "formValidationError",
-"form": {
-"name": "Contact us Form",
-"category": "Form Validation",
-"applicationStatus": "Pending",
-"fieldAbandonment": "",
-"validationError": document.querySelector('.error-msg').textContent
-}
-});
-dataLayer.push({
-  event: "formValidationError",
-  "form": {
-    "name": "Contact us Form",
-    "category": "Form Validation",
-    "applicationStatus": "Pending",
-    "fieldAbandonment": "",
-    "validationError": document.querySelector('.error-msg').textContent
-  }
-});
-clearInterval(a);
-}
-},100)
-}
-})
-
-
-function closePopup(){
-  document.getElementById("thankYouPopup").style.display = "none";
-}
-
-        function startChat() {
-            alert('Live chat feature would open here. In a real application, this would connect you to a customer service representative.');
-        }
-
-        // Add form validation and visual feedback
-        const inputs = document.querySelectorAll('input, select, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                if (this.hasAttribute('required') && !this.value.trim()) {
-                    this.style.borderColor = '#dc3545';
-                } else {
-                    this.style.borderColor = '#28a745';
-                }
-            });
-
-            input.addEventListener('focus', function() {
-                this.style.borderColor = '#1e3c72';
-            });
-        });
-
-        // Add animation effects
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.contact-form, .contact-info, .hours-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s, transform 0.6s';
-                observer.observe(card);
-            });
-        });
-//Form Load Datalayer		
-
-window.addEventListener('beforeunload',function(){
-if(ab === 1){
-adobeDataLayer.push({
-"event": "formAbandonment",
-"form": {
-"name": "Contact us Form",
-"category": "Abandonment",
-"applicationStatus": "Not Completed",
-"fieldAbandonment": fdname,
-"validationError": ""
-}
-}); 
-dataLayer.push({
-  event: "formAbandonment",
-  "form": {
-    "name": "Contact us Form",
-    "category": "Abandonment",
-    "applicationStatus": "Not Completed",
-    "fieldAbandonment": fdname,
-    "validationError": ""
-  }
-});
-}
-})
-// Service Card Button Click Tracking
-document.addEventListener('click', function(e){
-
-var btn = e.target.closest('.service-card .btn');
-
-if(btn){
-
-    var card = btn.closest('.service-card');
-
-    var title = card.querySelector('h3')
-        ? card.querySelector('h3').innerText.trim()
-        : '';
-
-    var cta = btn.innerText.trim();
-
-    window.dataLayer = window.dataLayer || [];
-
-    dataLayer.push({
-        event: "internalcampaignClick",
-        internalCampaign: {
-            category: "Click",
-            title: title,
-            ctatext: cta,
-            slot: "NA"
-        }
-    });
-
-    window.adobeDataLayer = window.adobeDataLayer || [];
-
-    adobeDataLayer.push({
-        event: "internalcampaignClick",
-        internalCampaign: {
-            category: "Click",
-            title: title,
-            ctatext: cta,
-            slot: "NA"
-        }
-    });
-}
-});
-
-
-</script>
-
-<link id="css-theme" rel="stylesheet" type="text/css" href="/css-theme_e8a4f1b118ff8d52ecc804c33f37fa284b9b8e24.css">
-<script id="scripts" type="text/javascript" src="/scripts_853bb7c935fdebf0c5fe6bc9b19347595f484185.js"></script>
-<meta name="referrer" content="same-origin" />
-
-			<link rel="icon" sizes="16x16" type="image/png" href=/assets/favicon_16.png />
-			<link rel="icon" sizes="32x32" type="image/png" href=/assets/favicon_32.png />
-				<link rel="icon" sizes="any" type="image/svg+xml" href=/assets/favicon.svg />
-<title>Xerago Chat</title><meta name="application-name" content="Xerago Chat"><meta name="apple-mobile-web-app-title" content="Xerago Chat">
-<meta http-equiv="content-language" content=""><meta name="language" content="">
-<meta name="robots" content="INDEX,FOLLOW">
-<meta name="msvalidate.01" content="">
-<meta name="google-site-verification" content="">
-<meta property="fb:app_id" content="">
-<base href="/">
-<link id="css-theme" rel="stylesheet" type="text/css" href="/css-theme_e8a4f1b118ff8d52ecc804c33f37fa284b9b8e24.css">
-<script id="scripts" type="text/javascript" src="/scripts_853bb7c935fdebf0c5fe6bc9b19347595f484185.js"></script>
-<meta name="referrer" content="same-origin" />
-
-			<link rel="icon" sizes="16x16" type="image/png" href=/assets/favicon_16.png />
-			<link rel="icon" sizes="32x32" type="image/png" href=/assets/favicon_32.png />
-				<link rel="icon" sizes="any" type="image/svg+xml" href=/assets/favicon.svg />
-<title>Xerago Chat</title><meta name="application-name" content="Xerago Chat"><meta name="apple-mobile-web-app-title" content="Xerago Chat">
-<meta http-equiv="content-language" content=""><meta name="language" content="">
-<meta name="robots" content="INDEX,FOLLOW">
-<meta name="msvalidate.01" content="">
-<meta name="google-site-verification" content="">
-<meta property="fb:app_id" content="">
-<base href="/">
+  <title>Contact Us — Xera Bank</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
-<noscript style="color: white; text-align:center">
-	You need to enable JavaScript to run this app.
-</noscript>
-<div id="react-root">
-	<div class="page-loading" role="alert" aria-busy="true" aria-live="polite" aria-label="loading">
-		<div class="loading__animation">
-			<div class="loading__animation__bounce"></div>
-			<div class="loading__animation__bounce"></div>
-			<div class="loading__animation__bounce"></div>
-		</div>
-	</div>
-</div>
-
-<style id='css-variables'> :root {}</style>
-
-
-<noscript style="color: white; text-align:center">
-	You need to enable JavaScript to run this app.
-</noscript>
-<div id="react-root">
-	<div class="page-loading" role="alert" aria-busy="true" aria-live="polite" aria-label="loading">
-		<div class="loading__animation">
-			<div class="loading__animation__bounce"></div>
-			<div class="loading__animation__bounce"></div>
-			<div class="loading__animation__bounce"></div>
-		</div>
-	</div>
-</div>
-
-<style id='css-variables'> :root {}</style>
-
-    <header>
-        <nav class="container">
-            <div class="logo">Xera Bank  </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="account.html">Account</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                
-            </ul>
-        </nav>
-    </header>
-
-<main>
-  <div class="container">
-    <div class="page-header">
-      <h1>Contact Us</h1>
-	  
-      <p>We're here to help with all your banking needs. Get in touch with us today.</p>
+  <header class="site-header scrolled" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link" aria-label="Xera Bank — Home">
+        <img src="assets/logo.svg" alt="Xera Bank logo" width="160" height="40">
+      </a>
+      <ul class="main-nav" role="navigation">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle" aria-haspopup="true">Products ▾</button>
+          <ul class="dropdown-menu">
+            <li><a href="products.html#savings">Savings Account</a></li>
+            <li><a href="products.html#current">Current Account</a></li>
+            <li><a href="products.html#personal-loan">Loans</a></li>
+            <li><a href="products.html#credit-card">Credit Cards</a></li>
+            <li><a href="products.html#fixed-deposit">Fixed Deposits</a></li>
+          </ul>
+        </li>
+        <li><a href="blog.html">Blog</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle" aria-haspopup="true">Help &amp; Support ▾</button>
+          <ul class="dropdown-menu">
+            <li><a href="contact.html#faqs">FAQs</a></li>
+            <li><a href="contact.html#branch-locator">Branch Locator</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#grievance">Grievance Redressal</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="header-actions">
+        <a href="tel:+9118001234567" class="header-phone" aria-label="Call us at +91 1800 123 4567">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.25 1.01l-2.2 2.22z"/></svg>
+          <span>+91 1800 123 4567</span>
+        </a>
+        <div class="search-wrapper">
+          <button class="search-toggle" aria-label="Open search" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+          <div class="search-panel"><div class="search-panel-inner">
+            <input type="search" id="siteSearch" placeholder="Search..." aria-label="Search">
+            <ul class="search-suggestions"></ul>
+          </div></div>
+        </div>
+        <button class="mobile-toggle" aria-label="Toggle menu" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <div class="contact-grid">
-      <div class="contact-form">
-        <h2>Send us a Message</h2>
-        <!-- Added novalidate and error message spans -->
-        <form id="contactForm" novalidate>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>We're here to help with all your banking needs. Reach out anytime.</p>
+      <a href="tel:+9118001234567" class="btn btn-primary" style="margin-top:1.5rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right:0.5rem;"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.25 1.01l-2.2 2.22z"/></svg>
+        Call +91 1800 123 4567
+      </a>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container contact-grid">
+      <div class="contact-card animate-on-scroll">
+        <h2 style="color:var(--color-navy);margin-bottom:1.5rem;">Send Us a Message</h2>
+        <div class="form-success" id="contactSuccess" role="alert">Thank you! We'll get back to you within 24 hours.</div>
+        <form id="contactForm" action="#" novalidate>
           <div class="form-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required>
-            <span class="error-msg" id="nameError"></span>
+            <span class="form-error">This field is required</span>
           </div>
-          
           <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
-            <span class="error-msg" id="emailError"></span>
+            <span class="form-error">Enter a valid email address</span>
           </div>
-          
           <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone">
-            <span class="error-msg" id="phoneError"></span>
+            <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number">
+            <span class="form-error">Enter a valid 10-digit phone number</span>
           </div>
-          
           <div class="form-group">
             <label for="subject">Subject</label>
             <select id="subject" name="subject" required>
               <option value="">Select a topic</option>
-              <option value="account">Account Questions</option>
+              <option value="account">Account Enquiry</option>
               <option value="loans">Loans &amp; Mortgages</option>
               <option value="cards">Credit Cards</option>
-              <option value="online">Online Banking</option>
+              <option value="digital">Digital Banking</option>
               <option value="complaint">File a Complaint</option>
               <option value="other">Other</option>
             </select>
-            <span class="error-msg" id="subjectError"></span>
+            <span class="form-error">Please select a subject</span>
           </div>
-          
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Please describe how we can help you..." required></textarea>
-            <span class="error-msg" id="messageError"></span>
+            <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
+            <span class="form-error">This field is required</span>
           </div>
-          
-          <button type="submit" class="btn">Send Message</button>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
         </form>
       </div>
 
-      <div class="contact-info">
-        <h2>Get in Touch</h2>
-        
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div class="contact-details">
+      <div class="contact-card animate-on-scroll">
+        <h2 style="color:var(--color-navy);margin-bottom:1.5rem;">Get in Touch</h2>
+        <div class="contact-info-item">
+          <div style="font-size:1.5rem;" aria-hidden="true">📞</div>
+          <div>
             <h3>Phone</h3>
-            <p>Customer Service: (555) 123-4567</p>
-            <p>24/7 Support: (555) 123-4568</p>
+            <p><a href="tel:+9118001234567">+91 1800 123 4567</a> — Toll-free, 24/7</p>
+            <p><a href="tel:+9118001234568">+91 1800 123 4568</a> — NRI Helpline</p>
           </div>
         </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">✉️</div>
-          <div class="contact-details">
+        <div class="contact-info-item">
+          <div style="font-size:1.5rem;" aria-hidden="true">💬</div>
+          <div>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/911800123456?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services" target="_blank" rel="noopener">Chat with us on WhatsApp</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div style="font-size:1.5rem;" aria-hidden="true">✉️</div>
+          <div>
             <h3>Email</h3>
-            <p>support@analyticsbank.com</p>
-            <p>info@analyticsbank.com</p>
+            <p><a href="mailto:support@xerabank.in">support@xerabank.in</a></p>
+            <p><a href="mailto:info@xerabank.in">info@xerabank.in</a></p>
           </div>
         </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div class="contact-details">
-            <h3>Address</h3>
-            <p>123 Banking Street</p>
-            <p>Financial District, NY 10001</p>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">💬</div>
-          <div class="contact-details">
-            <h3>Live Chat</h3>
-            <p>Available 24/7 through online banking</p>
-           <!-- <button onclick="startChat()" style="background: #1e3c72; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 0.5rem;">Start Chat</button>-->
+        <div class="contact-info-item">
+          <div style="font-size:1.5rem;" aria-hidden="true">📍</div>
+          <div>
+            <h3>Head Office</h3>
+            <p>Xera Tower, Bandra Kurla Complex<br>Mumbai, Maharashtra 400051</p>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="hours-grid">
-      <div class="hours-card">
-        <h3>Branch Hours</h3>
-        <ul class="hours-list">
-          <li><span>Monday - Friday</span><span>9:00 AM - 5:00 PM</span></li>
-          <li><span>Saturday</span><span>9:00 AM - 2:00 PM</span></li>
-          <li><span>Sunday</span><span>Closed</span></li>
-        </ul>
+  <!-- Map -->
+  <section class="map-section section-alt" id="branch-locator">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Find a Branch Near You</h2>
+        <p>Visit us at any of our 450+ branches across India.</p>
       </div>
-
-      <div class="hours-card">
-        <h3>Customer Service</h3>
-        <ul class="hours-list">
-          <li><span>Monday - Friday</span><span>7:00 AM - 10:00 PM</span></li>
-          <li><span>Saturday</span><span>8:00 AM - 8:00 PM</span></li>
-          <li><span>Sunday</span><span>9:00 AM - 6:00 PM</span></li>
-          <li><span>Emergency Support</span><span>24/7</span></li>
-        </ul>
+      <div class="map-embed animate-on-scroll">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.665978887887!2d72.8677!3d19.0596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9c6766b5f8d%3A0x3b8b8b8b8b8b8b8b!2sBandra%20Kurla%20Complex%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1718000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Xera Bank head office location"></iframe>
+      </div>
+      <div class="branch-search animate-on-scroll">
+        <h3 style="color:var(--color-navy);margin-bottom:1rem;">Find Nearest Branch</h3>
+        <form id="branchSearchForm" class="branch-search-form" action="#">
+          <input type="text" placeholder="Enter city or PIN code" aria-label="City or PIN code" required>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div id="branchResults" class="branch-results" role="region" aria-label="Branch search results"></div>
       </div>
     </div>
-  </div>
-  
-  <div class="popup" id="thankYouPopup">
-  <div class="popup-content">
-    <h2>Thank You!</h2>
-    <p>Your message has been submitted successfully.</p>
-    <button onclick="closePopup()">Close</button>
-  </div>
-</div>
-</main>
+  </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Xera Bank  . All rights reserved. | FDIC Insured | Equal Housing Lender</p>
+  <!-- FAQs -->
+  <section class="section" id="faqs">
+    <div class="container" style="max-width:800px;">
+      <div class="section-header animate-on-scroll">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="animate-on-scroll" style="background:var(--color-white);padding:2rem;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);">
+        <h3 style="color:var(--color-navy);margin-bottom:0.5rem;">How do I open a savings account online?</h3>
+        <p style="color:var(--color-text-muted);margin-bottom:1.5rem;font-size:var(--font-size-sm);">Visit our <a href="products.html#savings">Savings Account page</a> and click "Apply Now". You'll need your Aadhaar, PAN, and a valid mobile number. Account activation takes under 10 minutes.</p>
+        <h3 style="color:var(--color-navy);margin-bottom:0.5rem;">What are your home loan interest rates?</h3>
+        <p style="color:var(--color-text-muted);margin-bottom:1.5rem;font-size:var(--font-size-sm);">Home loan rates start at 8.5% p.a. for salaried individuals. Women borrowers receive an additional 0.25% concession. <a href="products.html#home-loan">View full details</a>.</p>
+        <h3 style="color:var(--color-navy);margin-bottom:0.5rem;">Is my deposit insured?</h3>
+        <p style="color:var(--color-text-muted);font-size:var(--font-size-sm);">Yes. All deposits are insured by DICGC up to ₹5 lakh per depositor per bank, as per RBI guidelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grievance -->
+  <section class="section section-alt" id="grievance">
+    <div class="container" style="max-width:800px;text-align:center;">
+      <div class="animate-on-scroll">
+        <h2 style="color:var(--color-navy);margin-bottom:1rem;">Grievance Redressal</h2>
+        <p style="color:var(--color-text-muted);margin-bottom:1.5rem;">If you're unsatisfied with our resolution, escalate to our Grievance Officer at <a href="mailto:grievance@xerabank.in">grievance@xerabank.in</a> or call <a href="tel:+9118001234569">+91 1800 123 4569</a>. We aim to resolve all complaints within 7 working days.</p>
+        <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo-link"><div class="logo-text">Xera<span>BANK</span></div></a>
+          <p>Xera Bank — trusted retail banking since 1998.</p>
         </div>
-    </footer>
+        <div class="footer-col"><h4>Products</h4><ul>
+          <li><a href="products.html#savings">Savings Account</a></li>
+          <li><a href="products.html#home-loan">Home Loan</a></li>
+          <li><a href="products.html#credit-card">Credit Card</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Support</h4><ul>
+          <li><a href="contact.html#faqs">FAQs</a></li>
+          <li><a href="contact.html#branch-locator">Branch Locator</a></li>
+          <li><a href="contact.html#grievance">Grievance Redressal</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Newsletter</h4>
+          <form id="newsletterForm" class="newsletter-form" action="#" novalidate>
+            <div class="form-success" role="alert">Thank you! We'll get back to you within 24 hours.</div>
+            <input type="email" placeholder="Your email" required aria-label="Email">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Xera Bank. All rights reserved.</p></div>
+    </div>
+  </footer>
 
-    <script>
-	
-	
- 
-
-
-    </script>
+  <a href="https://wa.me/911800123456?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <button class="back-to-top" aria-label="Back to top" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg></button>
+  <script src="js/main.js"></script>
 </body>
 </html>

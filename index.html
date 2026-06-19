@@ -1,270 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title> Xera Bank  - Your Trusted Banking Partner</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      color: #333;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    header {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: white;
-      padding: 1rem 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .nav-links a:hover {
-      color: #ffd700;
-    }
-
-    .search-container {
-      display: flex;
-      align-items: center;
-      background: rgba(255,255,255,0.1);
-      border-radius: 25px;
-      padding: 5px 15px;
-    }
-
-    .search-input {
-      background: transparent;
-      border: none;
-      color: white;
-      padding: 8px;
-      outline: none;
-      width: 200px;
-    }
-
-    .search-input::placeholder {
-      color: rgba(255,255,255,0.7);
-    }
-
-    .search-btn {
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-    }
-
-    .search-no-results {
-      display: none;
-      position: fixed;
-      top: 72px;
-      left: 0;
-      right: 0;
-      background: #fff3cd;
-      color: #856404;
-      text-align: center;
-      padding: 10px 20px;
-      z-index: 999;
-      border-bottom: 1px solid #ffc107;
-      font-size: 0.95rem;
-    }
-
-    .carousel-wrapper {
-      margin-top: 80px;
-      position: relative;
-      overflow: hidden;
-      height: 600px;
-    }
-
-    .carousel {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      height: 100%;
-    }
-
-    .slide {
-      min-width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .banner-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: white;
-      background: rgba(0,0,0,0.4);
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .banner-content h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .banner-content p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 12px 30px;
-      border: none;
-      border-radius: 25px;
-      font-size: 1rem;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
-
-    .btn-primary {
-      background: #ffd700;
-      color: #333;
-    }
-
-    .btn-primary:hover {
-      background: #ffed4e;
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: white;
-      border: 2px solid white;
-    }
-
-    .btn-secondary:hover {
-      background: white;
-      color: #333;
-    }
-
-    .carousel-nav {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .carousel-dot {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      background-color: white;
-      opacity: 0.6;
-      border-radius: 50%;
-      margin: 0 5px;
-      cursor: pointer;
-    }
-
-    .carousel-dot.active {
-      opacity: 1;
-      background-color: #ffd700;
-    }
-
-    .services {
-      padding: 80px 0;
-      background: #f8f9fa;
-    }
-
-    .services h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      color: #1e3c72;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .service-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .service-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    footer {
-      background: #1e3c72;
-      color: white;
-      text-align: center;
-      padding: 2rem 0;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .search-container {
-        display: none;
-      }
-      .banner-content h1 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -272,508 +10,317 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-MZ98B6J5');</script>
   <!-- End Google Tag Manager -->
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://assets.adobedtm.com/4fa03d1212c6/040e774de1b7/launch-7f68937d2e8f-development.min.js" async></script>
-  <!-- Umami Analytics -->
   <script defer src="https://uasdevanalytics.xerago.com/script.js" data-website-id="34a448a0-4b9b-406c-871d-d1c018dc7d09"></script>
-  <!-- End Umami Analytics -->
-  <script>
-  window.adobeDataLayer = window.adobeDataLayer || [];
-  window.dataLayer = window.dataLayer || [];
-
-if(localStorage.getItem('buttonclick')){
-var a = 0;
-    if(a === 0){
-        adobeDataLayer.push({
-            'event' : 'internalcampaignClick',
-            'internalCampaign' : {
-                
-                'ctatext' : localStorage.getItem('buttonclick'),
-				'category' : localStorage.getItem('category'),
-                'title' : localStorage.getItem('title'),
-               'slot' : localStorage.getItem('slot')
-            }
-        })
-        dataLayer.push({
-            'event' : 'internalcampaignClick',
-            'internalCampaign' : {
-                
-                'ctatext' : localStorage.getItem('buttonclick'),
-				'category' : localStorage.getItem('category'),
-                'title' : localStorage.getItem('title'),
-               'slot' : localStorage.getItem('slot')
-            }
-        })
-        a = 1;
-		 localStorage.removeItem('category');
-        localStorage.removeItem('buttonclick');
-        localStorage.removeItem('title');
-        localStorage.removeItem('slot');
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  // 1. Push saved CTA click if exists
- 
-$('.nav-links a').on('click',function(){
-    localStorage.setItem('buttonclick',$(this).text().trim())
-    localStorage.setItem('category','Header');
-    localStorage.setItem('title','Header');
-    localStorage.setItem('slot','N/A');
-})
-$('.btn-primary, .btn-secondary').on('click',function(){
-    localStorage.setItem('buttonclick',$(this).text().trim())
-    localStorage.setItem('category','Banner');
-    localStorage.setItem('title',$(this).closest('.banner-content').find('h1').text().trim());
-    localStorage.setItem('slot',$(this).closest('div.slide').find('img').attr('alt'));
-})
-$('button.btn').on('click',function(){
-    localStorage.setItem('buttonclick',$(this).text().trim())
-    localStorage.setItem('category','Buttons');
-    localStorage.setItem('title',$(this).closest('.service-card').find('h3').text().trim());
-    localStorage.setItem('slot','N/A');
-})
-});
-
-//Search Function withresult
-  document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchTerm = urlParams.get("search");
-
-    if (searchTerm) {
-      const pageText = document.body.innerText.toLowerCase();
-      const found = pageText.includes(searchTerm.toLowerCase());
-
-      if (found) {
-        window.adobeDataLayer.push({
-          event: "searcheswithResult",
-          searches: {
-            withResult: searchTerm
-          }
-        });
-        window.dataLayer.push({
-          event: "searcheswithResult",
-          searches: {
-            withResult: searchTerm
-          }
-        });
-      }
-    }
-  });
-// Ensure adobeDataLayer exists
-
-
-// Push pageLoad event
-window.adobeDataLayer.push({
- "event": "pageLoad",
-"pageInfo": {
-"name": document.title,
-"url": location.href,
-"applicationStatus": "Test"
-  }
-});
-
-
-// window.dataLayer = window.dataLayer || [];
-
-// if(localStorage.getItem('buttonclick')){
-// var a = 0;
-//     if(a === 0){
-//         dataLayer.push({
-//             'event' : 'internalcampaignClick',
-//             'internalCampaign' : {
-                
-//                 'ctatext' : localStorage.getItem('buttonclick'),
-// 				'category' : localStorage.getItem('category'),
-//                 'title' : localStorage.getItem('title'),
-//                'slot' : localStorage.getItem('slot')
-//             }
-//         })
-//         a = 1;
-// 		 localStorage.removeItem('category');
-//         localStorage.removeItem('buttonclick');
-//         localStorage.removeItem('title');
-//         localStorage.removeItem('slot');
-//     }
-// }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   // 1. Push saved CTA click if exists
- 
-// $('.nav-links a').on('click',function(){
-//     localStorage.setItem('buttonclick',$(this).text().trim())
-//     localStorage.setItem('category','Header');
-//     localStorage.setItem('title','Header');
-//     localStorage.setItem('slot','N/A');
-// })
-// $('.btn-primary, .btn-secondary').on('click',function(){
-//     localStorage.setItem('buttonclick',$(this).text().trim())
-//     localStorage.setItem('category','Banner');
-//     localStorage.setItem('title',$(this).closest('.banner-content').find('h1').text().trim());
-//     localStorage.setItem('slot',$(this).closest('div.slide').find('img').attr('alt'));
-// })
-// $('button.btn').on('click',function(){
-//     localStorage.setItem('buttonclick',$(this).text().trim())
-//     localStorage.setItem('category','Buttons');
-//     localStorage.setItem('title',$(this).closest('.service-card').find('h3').text().trim());
-//     localStorage.setItem('slot','N/A');
-// })
-// });
-
-// //Search Function withresult
-//   document.addEventListener("DOMContentLoaded", function () {
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const searchTerm = urlParams.get("search");
-
-//     if (searchTerm) {
-//       const pageText = document.body.innerText.toLowerCase();
-//       const found = pageText.includes(searchTerm.toLowerCase());
-
-//       if (found) {
-//         window.dataLayer.push({
-//           event: "searcheswithResult",
-//           searches: {
-//             withResult: searchTerm
-//           }
-//         });
-//       }
-//     }
-//   });
-// Ensure adobeDataLayer exists
-
-
-// Push pageLoad event
-window.dataLayer.push({
- "event": "pageLoad",
-"pageInfo": {
-"name": document.title,
-"url": location.href,
-"applicationStatus": "Test"
-  }
-});
-
-// Banner CTA Click Tracking
-document.addEventListener('click', function(e){
-    var btn = e.target.closest('.cta-buttons a');
-
-    if(btn){
-        var banner = btn.closest('.banner-content');
-
-        var title = banner.querySelector('h1')
-            ? banner.querySelector('h1').innerText.trim()
-            : '';
-
-        var cta = btn.innerText.trim();
-
-        window.dataLayer = window.dataLayer || [];
-
-        dataLayer.push({
-            event: "internalcampaignClick",
-            internalCampaign: {
-                category: "Click",
-                title: title,
-                ctatext: cta,
-                slot: "NA"
-            }
-        });
-
-        window.adobeDataLayer = window.adobeDataLayer || [];
-
-        adobeDataLayer.push({
-            event: "internalcampaignClick",
-            internalCampaign: {
-                category: "Click",
-                title: title,
-                ctatext: cta,
-                slot: "NA"
-            }
-        });
-    }
-});
-
-
-// Search Button Click Tracking
-document.addEventListener('click', function(e){
-    var btn = e.target.closest('.search-btn');
-
-    if(btn){
-        var searchTerm = document.getElementById('searchInput')
-            ? document.getElementById('searchInput').value.trim()
-            : '';
-
-        window.dataLayer = window.dataLayer || [];
-
-        dataLayer.push({
-            event: "internalcampaignClick",
-            internalCampaign: {
-                category: "Search",
-                title: "Header",
-                ctatext: "Search",
-                slot: searchTerm || "NA"
-            }
-        });
-
-        window.adobeDataLayer = window.adobeDataLayer || [];
-
-        adobeDataLayer.push({
-            event: "internalcampaignClick",
-            internalCampaign: {
-                category: "Search",
-                title: "Header",
-                ctatext: "Search",
-                slot: searchTerm || "NA"
-            }
-        });
-    }
-});
-
-
-// Service Card Button Click Tracking
-document.addEventListener('click', function(e){
-
-    var btn = e.target.closest('.service-card .btn');
-
-    if(btn){
-
-        var card = btn.closest('.service-card');
-
-        var title = card.querySelector('h3')
-            ? card.querySelector('h3').innerText.trim()
-            : '';
-
-        var cta = btn.innerText.trim();
-
-        window.dataLayer = window.dataLayer || [];
-
-        dataLayer.push({
-            event: "internalcampaignClick",
-            internalCampaign: {
-                category: "Click",
-                title: title,
-                ctatext: cta,
-                slot: "NA"
-            }
-        });
-
-        window.adobeDataLayer = window.adobeDataLayer || [];
-
-        adobeDataLayer.push({
-            event: "internalcampaignClick",
-            internalCampaign: {
-                category: "Click",
-                title: title,
-                ctatext: cta,
-                slot: "NA"
-            }
-        });
-    }
-});
-
-
-  </script>
-
-
+  <title>Xera Bank — Your Trusted Retail Banking Partner</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/styles.css">
   
-  </head>
+</head>
 <body>
-  <header>
-    <nav class="container">
-      <div class="logo">Xera Bank </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="account.html">Account</a></li>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link" aria-label="Xera Bank — Home">
+        <img src="assets/logo.svg" alt="Xera Bank logo" width="160" height="40">
+      </a>
+
+      <ul class="main-nav" role="navigation" aria-label="Main navigation">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Products ▾</button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="products.html#savings" role="menuitem">Savings Account</a></li>
+            <li><a href="products.html#current" role="menuitem">Current Account</a></li>
+            <li><a href="products.html#personal-loan" role="menuitem">Loans</a></li>
+            <li><a href="products.html#credit-card" role="menuitem">Credit Cards</a></li>
+            <li><a href="products.html#fixed-deposit" role="menuitem">Fixed Deposits</a></li>
+          </ul>
+        </li>
+        <li><a href="blog.html">Blog</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Help &amp; Support ▾</button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="contact.html#faqs" role="menuitem">FAQs</a></li>
+            <li><a href="contact.html#branch-locator" role="menuitem">Branch Locator</a></li>
+            <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+            <li><a href="contact.html#grievance" role="menuitem">Grievance Redressal</a></li>
+          </ul>
+        </li>
         <li><a href="contact.html">Contact</a></li>
-        
       </ul>
-      <div class="search-container">
-        <input type="text" class="search-input" id="searchInput" placeholder="Search services...">
-        <button class="search-btn" onclick="performSearch()">🔍</button>
+
+      <div class="header-actions">
+        <a href="tel:+9118001234567" class="header-phone" aria-label="Call us at +91 1800 123 4567">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.25 1.01l-2.2 2.22z"/></svg>
+          <span>+91 1800 123 4567</span>
+        </a>
+        <div class="search-wrapper">
+          <button class="search-toggle" aria-label="Open search" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+          <div class="search-panel" role="search">
+            <div class="search-panel-inner">
+              <input type="search" id="siteSearch" placeholder="Search products, branches..." aria-label="Search">
+              <ul class="search-suggestions" role="listbox"></ul>
+            </div>
+          </div>
+        </div>
+        <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+        </button>
       </div>
-    </nav>
+    </div>
   </header>
-  <div id="searchNoResults" class="search-no-results" role="alert" aria-live="polite"></div>
 
-  <!-- Carousel -->
-  <div class="carousel-wrapper">
-    <div class="carousel" id="carouselSlides">
-      <div class="slide">
-        <img src="./images/img1.jpg" alt="Slide 1">
-        <div class="banner-content">
-          <h1>Welcome to Xera Bank </h1>
-          <p>Your trusted partner for all banking needs.</p>
-          <div class="cta-buttons">
-            <a href="account.html" class="btn btn-primary">Get Started</a>
-            <a href="services.html" class="btn btn-secondary">Learn More</a>
+  <!-- Hero Carousel -->
+  <section class="hero-carousel" aria-label="Featured promotions">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <div class="slide-bg slide-bg-1" role="img" aria-label="Smart savings"></div>
+        <div class="slide-content">
+          <h1>Smart Savings That Grow With You</h1>
+          <p>Earn up to 7.5% p.a. on our premium savings accounts. Start building your future today.</p>
+          <div class="cta-buttons" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="products.html#savings" class="btn btn-primary">Open an Account</a>
+            <a href="products.html" class="btn btn-secondary">Explore Products</a>
           </div>
         </div>
       </div>
-      <div class="slide">
-        <img src="./images/img2.jpg" alt="Slide 2">
-        <div class="banner-content">
-          <h1>Grow with Confidence</h1>
-          <p>Business banking made easy for your enterprise needs.</p>
-          <div class="cta-buttons">
-            <a href="services.html" class="btn btn-primary">Explore Business</a>
-            <a href="contact.html" class="btn btn-secondary">Talk to Us</a>
+      <div class="carousel-slide">
+        <div class="slide-bg slide-bg-2" role="img" aria-label="Home loans"></div>
+        <div class="slide-content">
+          <h1>Home Loans at 8.5% Interest</h1>
+          <p>Make your dream home a reality with flexible EMIs and quick approval in 48 hours.</p>
+          <div class="cta-buttons" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="products.html#home-loan" class="btn btn-primary">Apply Now</a>
+            <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
           </div>
         </div>
       </div>
-      <div class="slide">
-        <img src="./images/img3.jpg" alt="Slide 3">
-        <div class="banner-content">
-          <h1>Plan Your Future</h1>
-          <p>Invest smartly with Xera Bank ’s advisory services.</p>
-          <div class="cta-buttons">
-            <a href="services.html" class="btn btn-primary">View Plans</a>
-            <a href="account.html" class="btn btn-secondary">Open Account</a>
+      <div class="carousel-slide">
+        <div class="slide-bg slide-bg-3" role="img" aria-label="Digital banking"></div>
+        <div class="slide-content">
+          <h1>Zero-Fee Digital Banking</h1>
+          <p>Bank anywhere, anytime. UPI, instant transfers, and bill pay — all in one secure app.</p>
+          <div class="cta-buttons" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="products.html#current" class="btn btn-primary">Learn More</a>
+            <a href="products.html" class="btn btn-secondary">View All Products</a>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Manual Navigation -->
-    <div class="carousel-nav">
-      <span class="carousel-dot" onclick="goToSlide(0)"></span>
-      <span class="carousel-dot" onclick="goToSlide(1)"></span>
-      <span class="carousel-dot" onclick="goToSlide(2)"></span>
+    <div class="carousel-arrows">
+      <button class="carousel-prev" aria-label="Previous slide" type="button">‹</button>
+      <button class="carousel-next" aria-label="Next slide" type="button">›</button>
     </div>
-  </div>
+    <div class="carousel-dots" role="tablist" aria-label="Slide navigation">
+      <button class="carousel-dot active" aria-label="Slide 1" type="button"></button>
+      <button class="carousel-dot" aria-label="Slide 2" type="button"></button>
+      <button class="carousel-dot" aria-label="Slide 3" type="button"></button>
+    </div>
+  </section>
 
-  <!-- Services -->
-  <section class="services">
+  <!-- Trust Bar -->
+  <section class="trust-bar" aria-label="Trust indicators">
+    <div class="container trust-grid">
+      <div class="trust-item animate-on-scroll"><strong>2M+</strong><span>Happy Customers</span></div>
+      <div class="trust-item animate-on-scroll"><strong>Est. 1998</strong><span>26 Years of Trust</span></div>
+      <div class="trust-item animate-on-scroll"><strong>256-bit</strong><span>Encryption Security</span></div>
+      <div class="trust-item animate-on-scroll"><strong>450+</strong><span>Branches Nationwide</span></div>
+    </div>
+  </section>
+
+  <!-- Key Offerings -->
+  <section class="section" id="offerings">
     <div class="container">
-      <h2>Our Services</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">💳</div>
-          <h3>Personal Banking</h3>
-          <p>Tailored solutions to meet your personal financial goals.</p>
-<button class="btn" onclick="window.open('account.html', '_blank')">Learn More</button>
-
-
-		  
-		  
+      <div class="section-header animate-on-scroll">
+        <h2>Banking Made Simple</h2>
+        <p>Everything you need to manage, grow, and protect your money — all in one place.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="product-card animate-on-scroll" id="savings-highlight">
+          <div class="product-card-body">
+            <div class="product-icon" aria-hidden="true">🏦</div>
+            <h3>Savings Accounts</h3>
+            <p>High-yield savings with zero minimum balance and instant fund transfers via UPI.</p>
+            <a href="products.html#savings" class="btn btn-primary btn-sm">Learn More</a>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">🏢</div>
-          <h3>Business Banking</h3>
-          <p>Powerful tools and services to support your business.</p>
-		  <button class="btn" onclick="window.open('services.html', '_blank')">Learn More</button>
-
+        <div class="product-card animate-on-scroll">
+          <div class="product-card-body">
+            <div class="product-icon" aria-hidden="true">💰</div>
+            <h3>Personal Loans</h3>
+            <p>Quick personal loans up to ₹25 lakh with competitive rates and minimal paperwork.</p>
+            <a href="products.html#personal-loan" class="btn btn-primary btn-sm">Apply Now</a>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">💰</div>
-          <h3>Loans & Mortgages</h3>
-          <p>Flexible terms and great rates for your financing needs.</p>
-		 <button class="btn" onclick="window.open('account.html', '_blank')">Learn More</button>
-
+        <div class="product-card animate-on-scroll">
+          <div class="product-card-body">
+            <div class="product-icon" aria-hidden="true">💳</div>
+            <h3>Credit Cards</h3>
+            <p>Rewards, cashback, and travel benefits on cards designed for every lifestyle.</p>
+            <a href="products.html#credit-card" class="btn btn-primary btn-sm">Learn More</a>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">📈</div>
-          <h3>Investment Services</h3>
-          <p>Expert advice to grow and protect your wealth.</p>
-		  <button class="btn" onclick="window.open('services.html', '_blank')">Learn More</button>
-
+        <div class="product-card animate-on-scroll">
+          <div class="product-card-body">
+            <div class="product-icon" aria-hidden="true">📱</div>
+            <h3>Digital Banking</h3>
+            <p>24/7 mobile and internet banking with biometric login and real-time alerts.</p>
+            <a href="products.html#current" class="btn btn-primary btn-sm">Get Started</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
+  <!-- Testimonials -->
+  <section class="section section-alt">
     <div class="container">
-      <p>&copy; 2024 Xera Bank . All rights reserved. | FDIC Insured | Equal Housing Lender</p>
+      <div class="section-header animate-on-scroll">
+        <h2>What Our Customers Say</h2>
+        <p>Real stories from families and professionals who trust Xera Bank.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll">
+          <blockquote>"Opening my savings account took less than 10 minutes online. The interest rates are genuinely among the best I've found."</blockquote>
+          <div class="testimonial-author">Priya Sharma</div>
+          <div class="testimonial-role">Software Engineer, Bengaluru</div>
+        </div>
+        <div class="testimonial-card animate-on-scroll">
+          <blockquote>"Xera Bank approved my home loan in just two days. Their relationship manager walked me through every step with patience."</blockquote>
+          <div class="testimonial-author">Rajesh Mehta</div>
+          <div class="testimonial-role">Business Owner, Mumbai</div>
+        </div>
+        <div class="testimonial-card animate-on-scroll">
+          <blockquote>"The mobile app is incredibly intuitive. I manage all my accounts, pay bills, and track spending without visiting a branch."</blockquote>
+          <div class="testimonial-author">Ananya Krishnan</div>
+          <div class="testimonial-role">Marketing Manager, Chennai</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Preview -->
+  <section class="section" id="blog-preview">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Latest News &amp; Insights</h2>
+        <p>Stay informed with expert tips on saving, investing, and financial wellness.</p>
+      </div>
+      <div class="cards-grid">
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-card-image">
+            <img src="assets/images/blog-savings.jpg" alt="Savings tips" loading="lazy">
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">Savings</span>
+            <h3>5 Smart Ways to Grow Your Emergency Fund in 2026</h3>
+            <div class="blog-date">June 10, 2026</div>
+            <p>Build a safety net that protects you and your family without sacrificing your lifestyle goals.</p>
+            <a href="blog-article.html" class="read-more">Read More →</a>
+          </div>
+        </article>
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-card-image">
+            <img src="assets/images/blog-home-loan.jpg" alt="Home loan guide" loading="lazy">
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">Home Loans</span>
+            <h3>First-Time Home Buyer? Here's What You Need to Know</h3>
+            <div class="blog-date">June 5, 2026</div>
+            <p>From down payments to documentation — a complete guide to securing your first home loan.</p>
+            <a href="blog.html" class="read-more">Read More →</a>
+          </div>
+        </article>
+        <article class="blog-card animate-on-scroll">
+          <div class="blog-card-image">
+            <img src="assets/images/blog-security.jpg" alt="Digital banking security" loading="lazy">
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">Security</span>
+            <h3>How to Keep Your Online Banking Safe in 2026</h3>
+            <div class="blog-date">May 28, 2026</div>
+            <p>Essential security practices every digital banking customer should follow today.</p>
+            <a href="blog.html" class="read-more">Read More →</a>
+          </div>
+        </article>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;" class="animate-on-scroll">
+        <a href="blog.html" class="btn btn-outline">View All Articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Idle engagement toast -->
+  <div class="idle-toast" id="idleToast" role="dialog" aria-labelledby="idleToastTitle" aria-hidden="true">
+    <button class="idle-toast-close" id="idleToastClose" aria-label="Close" type="button">&times;</button>
+    <h3 id="idleToastTitle">Still exploring? We can help.</h3>
+    <p>Chat with our team or browse our most popular products.</p>
+    <div class="idle-toast-actions">
+      <a href="https://wa.me/911800123456?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+      <button class="btn btn-outline btn-sm" id="idleViewProducts" type="button">View Products</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo-link" aria-label="Xera Bank — Home">
+            <div class="logo-text">Xera<span>BANK</span></div>
+          </a>
+          <p>Xera Bank has been helping Indian families achieve their financial goals since 1998. Licensed by RBI. Member DICGC.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="products.html#savings">Savings Account</a></li>
+            <li><a href="products.html#current">Current Account</a></li>
+            <li><a href="products.html#personal-loan">Personal Loan</a></li>
+            <li><a href="products.html#home-loan">Home Loan</a></li>
+            <li><a href="products.html#credit-card">Credit Card</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog &amp; News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html#branch-locator">Branch Locator</a></li>
+            <li><a href="contact.html#grievance">Grievance Redressal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="color:var(--color-slate-light);font-size:var(--font-size-sm);margin-bottom:1rem;">Get financial tips and exclusive offers in your inbox.</p>
+          <form id="newsletterForm" class="newsletter-form" action="#" novalidate>
+            <div class="form-success" role="alert">Thank you! We'll get back to you within 24 hours.</div>
+            <input type="email" placeholder="Your email address" required aria-label="Email for newsletter">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Xera Bank. All rights reserved. | RBI Licensed | DICGC Insured up to ₹5 lakh</p>
+      </div>
     </div>
   </footer>
 
-  <script>
+  <!-- Floating buttons -->
+  <a href="https://wa.me/911800123456?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <button class="back-to-top" aria-label="Back to top" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+  </button>
 
-  
-
-  function showSearchNoResults(term) {
-    const el = document.getElementById("searchNoResults");
-    if (el) {
-      el.textContent = `No results found for: "${term}"`;
-      el.style.display = "block";
-    }
-  }
-
-  function hideSearchNoResults() {
-    const el = document.getElementById("searchNoResults");
-    if (el) el.style.display = "none";
-  }
-
-  function performSearch() {
-    const rawTerm = document.getElementById("searchInput").value.trim();
-    const searchTerm = rawTerm.toLowerCase();
-
-    // Mapping of keywords to page names
-    const pageMap = {
-      "home": "index.html",
-      "services": "services.html",
-      "account": "account.html",
-      "contact": "contact.html",
-      "login": "login.html"
-    };
-
-    if (!searchTerm) {
-      hideSearchNoResults();
-      return;
-    }
-
-    // Check if search term matches any key
-    if (pageMap[searchTerm]) {
-      hideSearchNoResults();
-      window.location.href = `${pageMap[searchTerm]}?search=${encodeURIComponent(searchTerm)}`;
-
-    } else {
-      showSearchNoResults(rawTerm);
-
-      window.adobeDataLayer.push({
-        event: "searcheswithoutResult",
-        searches: {
-          withoutResult: searchTerm
-        }
-      });
-      window.dataLayer = window.dataLayer || [];
-      dataLayer.push({
-        event: "searcheswithoutResult",
-        searches: {
-          withoutResult: searchTerm
-        }
-      });
-    }
-  }
-
-  document.getElementById("searchInput").addEventListener("input", hideSearchNoResults);
-
-
-    const slides = document.getElementById('carouselSlides');
-    const dots = document.querySelectorAll('.carousel-dot');
-    let currentSlide = 0;
-    let totalSlides = dots.length;
-
-    function showSlide(index) {
-      slides.style.transform = `translateX(-${index * 100}%)`;
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[index].classList.add('active');
-      currentSlide = index;
-    }
-
-    function goToSlide(index) {
-      showSlide(index);
-    }
-
-    function autoSlide() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      showSlide(currentSlide);
-    }
-
-    setInterval(autoSlide, 5000);
-    showSlide(0); // initialize
-	
-	
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
