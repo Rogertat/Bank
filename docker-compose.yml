@@ -1,0 +1,11 @@
+services:
+  xerabank-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xerabank-web
+    ports:
+      - "9081:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    restart: unless-stopped
