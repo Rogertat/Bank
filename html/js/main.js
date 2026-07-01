@@ -21,20 +21,6 @@
     }
   });
 
-  // Restore saved CTA click from navigation
-  if (localStorage.getItem('buttonclick')) {
-    pushEvent('internalcampaignClick', {
-      internalCampaign: {
-        ctatext: localStorage.getItem('buttonclick'),
-        category: localStorage.getItem('category'),
-        title: localStorage.getItem('title'),
-        slot: localStorage.getItem('slot')
-      }
-    });
-    ['category', 'buttonclick', 'title', 'slot'].forEach(function (k) {
-      localStorage.removeItem(k);
-    });
-  }
 
   // Search result tracking from URL
   var urlParams = new URLSearchParams(window.location.search);
@@ -60,7 +46,6 @@
     initModals();
     initForms();
     initBranchLocator();
-    initNavTracking();
     initHighlightFromHash();
     initIdleToast();
     initLeaderProfiles();
@@ -191,11 +176,14 @@
         input.focus();
       }
       pushEvent('internalcampaignClick', {
-        internalCampaign: {
-          category: 'Search',
-          title: 'Header',
-          ctatext: 'Search',
-          slot: 'NA'
+        eventInfo: {
+          eventName: 'CTA Clicks',
+          eventCategory: 'engagement',
+          eventAction: 'click',
+          eventLabel: 'Search',
+          component: 'button',
+          placement: 'Header',
+          regionPath: window.location.pathname
         }
       });
     });
@@ -542,23 +530,6 @@
         results.appendChild(div);
       });
       results.classList.add('visible');
-    });
-  }
-
-  /* Nav click tracking */
-  function initNavTracking() {
-    document.querySelectorAll('.main-nav a, .btn, .read-more').forEach(function (el) {
-      el.addEventListener('click', function () {
-        var category = 'Header';
-        if (el.closest('.banner-content') || el.closest('.slide-content')) category = 'Banner';
-        else if (el.closest('.product-card')) category = 'Products';
-        else if (el.closest('.blog-card')) category = 'Blog';
-
-        localStorage.setItem('buttonclick', el.textContent.trim());
-        localStorage.setItem('category', category);
-        localStorage.setItem('title', el.closest('h1, h2, h3') ? el.closest('h1, h2, h3').textContent.trim() : document.title);
-        localStorage.setItem('slot', 'N/A');
-      });
     });
   }
 
