@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://assets.adobedtm.com/4fa03d1212c6/040e774de1b7/launch-1efd76be0f63.min.js" async></script>
+  <!-- <script src="https://assets.adobedtm.com/4fa03d1212c6/040e774de1b7/launch-1efd76be0f63.min.js" async></script> -->
+  <script src="https://assets.adobedtm.com/4fa03d1212c6/040e774de1b7/launch-7f68937d2e8f-development.min.js" async></script>
   <script async src="https://uasdevanalytics.xerago.com/script.js" data-website-id="b5e509c0-d70d-4b9e-b0f4-33d139c234b2"></script>
-  <title>Xera Bank — Your Trusted Retail Banking Partners</title>
+  <title>Xera Bank — Your Trusted Retail Banking Partner</title>
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
   <link rel="stylesheet" href="css/styles.css">
   
@@ -314,6 +315,34 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
   </button>
 
+  <script>
+    window.adobeDataLayer = window.adobeDataLayer || [];
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.main-nav a, .btn, .read-more').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var buttonText = el.textContent.trim();
+          var placementId = 'Header';
+          if (el.closest('.banner-content') || el.closest('.slide-content')) placementId = 'Banner';
+          else if (el.closest('.product-card')) placementId = 'Products';
+          else if (el.closest('.blog-card')) placementId = 'Blog';
+          var regionPath = window.location.pathname;
+
+          adobeDataLayer.push({
+            event: 'internalcampaignClick',
+            eventInfo: {
+              eventName: 'CTA Clicks',
+              eventCategory: 'engagement',
+              eventAction: 'click',
+              eventLabel: buttonText,
+              component: 'button',
+              placement: placementId,
+              regionPath: regionPath
+            }
+          });
+        });
+      });
+    });
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
