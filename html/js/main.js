@@ -2,35 +2,6 @@
 (function () {
   'use strict';
 
-  // Analytics helpers
-  window.adobeDataLayer = window.adobeDataLayer || [];
-  window.dataLayer = window.dataLayer || [];
-
-  function pushEvent(event, data) {
-    var payload = Object.assign({ event: event }, data || {});
-    window.adobeDataLayer.push(payload);
-    window.dataLayer.push(payload);
-  }
-
-  // Page load
-  pushEvent('pageLoad', {
-    pageInfo: {
-      name: document.title,
-      url: location.href,
-      applicationStatus: 'Test'
-    }
-  });
-
-
-  // Search result tracking from URL
-  var urlParams = new URLSearchParams(window.location.search);
-  var searchTerm = urlParams.get('search');
-  if (searchTerm) {
-    var found = document.body.innerText.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
-    if (found) {
-      pushEvent('searcheswithResult', { searches: { withResult: searchTerm } });
-    }
-  }
 
   document.addEventListener('DOMContentLoaded', init);
 
@@ -175,17 +146,6 @@
       if (panel.classList.contains('open')) {
         input.focus();
       }
-      pushEvent('internalcampaignClick', {
-        eventInfo: {
-          eventName: 'CTA Clicks',
-          eventCategory: 'engagement',
-          eventAction: 'click',
-          eventLabel: 'Search',
-          component: 'button',
-          placement: 'Header',
-          regionPath: window.location.pathname
-        }
-      });
     });
 
     input.addEventListener('input', function () {
@@ -226,7 +186,9 @@
         if (match) {
           navigateToSuggestion(match);
         } else if (term) {
-          pushEvent('searcheswithoutResult', { searches: { withoutResult: term } });
+          if (window.XeraAnalytics) {
+            window.XeraAnalytics.trackSearch('searcheswithoutResult', term);
+          }
         }
       }
     });
@@ -240,7 +202,9 @@
   }
 
   function navigateToSuggestion(match) {
-    pushEvent('searcheswithResult', { searches: { withResult: match.label } });
+    if (window.XeraAnalytics) {
+      window.XeraAnalytics.trackSearch('searcheswithResult', match.label);
+    }
     var parts = match.target.split('#');
     var page = parts[0];
     var hash = parts[1];
@@ -363,18 +327,7 @@
     // Contact form
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
-      var formName = 'Contact Us Form';
-      pushEvent('formLoad', { form: { name: formName, category: 'Load', applicationStatus: 'Pending' } });
-
-      var formStarted = false;
       contactForm.querySelectorAll('input, select, textarea').forEach(function (field) {
-        field.addEventListener('focus', function () {
-          if (!formStarted) {
-            formStarted = true;
-            pushEvent('formStart', { form: { name: formName, category: 'Start', applicationStatus: 'Completed' } });
-          }
-        });
-
         field.addEventListener('blur', function () {
           validateField(field);
         });
@@ -397,7 +350,9 @@
           var success = contactForm.querySelector('.form-success') ||
             document.getElementById('contactSuccess');
           if (success) success.classList.add('visible');
-          pushEvent('formComplete', { form: { name: formName, category: 'Completion', applicationStatus: 'Completed' } });
+          if (window.XeraContactAnalytics) {
+            window.XeraContactAnalytics.trackFormComplete();
+          }
           contactForm.reset();
           contactForm.querySelectorAll('.valid, .invalid').forEach(function (f) {
             f.classList.remove('valid', 'invalid');
@@ -406,9 +361,12 @@
             if (success) success.classList.remove('visible');
           }, 5000);
         } else {
-          pushEvent('formValidationError', {
-            form: { name: formName, category: 'Form Validation', applicationStatus: 'Pending', validationError: 'Required fields missing' }
-          });
+          if (window.XeraAnalytics) {
+            window.XeraAnalytics.trackForm('formValidationError', 'Contact Us Form', 'Form Validation', {
+              applicationStatus: 'Pending',
+              validationError: 'Required fields missing'
+            });
+          }
         }
       });
     }

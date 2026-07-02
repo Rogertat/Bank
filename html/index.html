@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MZ98B6J5');</script>
+<!-- End Google Tag Manager -->
+  <script>
+    window.adobeDataLayer = window.adobeDataLayer || [];
+    window.dataLayer = window.dataLayer || [];
+  </script>
+  <script src="js/analytics/core.js"></script>
   <!-- <script src="https://assets.adobedtm.com/4fa03d1212c6/040e774de1b7/launch-1efd76be0f63.min.js" async></script> -->
   <script src="https://assets.adobedtm.com/4fa03d1212c6/040e774de1b7/launch-7f68937d2e8f-development.min.js" async></script>
   <script async src="https://uasdevanalytics.xerago.com/script.js" data-website-id="b5e509c0-d70d-4b9e-b0f4-33d139c234b2"></script>
@@ -315,34 +327,8 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
   </button>
 
-  <script>
-    window.adobeDataLayer = window.adobeDataLayer || [];
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.main-nav a, .btn, .read-more').forEach(function (el) {
-        el.addEventListener('click', function () {
-          var buttonText = el.textContent.trim();
-          var placementId = 'Header';
-          if (el.closest('.banner-content') || el.closest('.slide-content')) placementId = 'Banner';
-          else if (el.closest('.product-card')) placementId = 'Products';
-          else if (el.closest('.blog-card')) placementId = 'Blog';
-          var regionPath = window.location.pathname;
-
-          adobeDataLayer.push({
-            event: 'internalcampaignClick',
-            eventInfo: {
-              eventName: 'CTA Clicks',
-              eventCategory: 'engagement',
-              eventAction: 'click',
-              eventLabel: buttonText,
-              component: 'button',
-              placement: placementId,
-              regionPath: regionPath
-            }
-          });
-        });
-      });
-    });
-  </script>
   <script src="js/main.js"></script>
+  <script src="js/analytics/common.js"></script>
+  <script src="js/analytics/pages/index.js"></script>
 </body>
 </html>
