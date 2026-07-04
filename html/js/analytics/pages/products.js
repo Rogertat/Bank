@@ -39,7 +39,7 @@
     document.querySelectorAll('[data-apply-modal]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var product = btn.getAttribute('data-product') || 'unknown';
-        A.trackCTA('Apply Now: ' + product, 'Products', 'button', 'Product Application');
+        A.trackCTA('Apply Now: ' + product, 'Products');
         A.pushEvent('modalOpen', {
           eventInfo: {
             eventName: 'Apply Modal Open',
@@ -75,17 +75,15 @@
     /* 43 — Apply form load */
     var applyForm = document.getElementById('applyForm');
     if (applyForm) {
-      A.trackForm('formLoad', APPLY_FORM_NAME, 'Load', { applicationStatus: 'Pending' });
+      A.trackForm('formLoad', APPLY_FORM_NAME, 'Lead', { applicationStatus: 'Pending' });
 
       var applyStarted = false;
-      applyForm.querySelectorAll('input, select, textarea').forEach(function (field) {
-        field.addEventListener('focus', function () {
-          if (!applyStarted) {
-            applyStarted = true;
-            A.trackForm('formStart', APPLY_FORM_NAME, 'Start', { applicationStatus: 'Completed' });
-          }
-        });
-      });
+      applyForm.addEventListener('focusin', function () {
+        if (!applyStarted) {
+          applyStarted = true;
+          A.trackForm('formStart', APPLY_FORM_NAME, 'Lead', { applicationStatus: 'Pending' });
+        }
+      }, true);
 
       /* 44 — Apply form submit */
       applyForm.addEventListener('submit', function (e) {
@@ -100,7 +98,7 @@
 
         if (valid) {
           var product = applyForm.querySelector('#applyProduct');
-          A.trackForm('formComplete', APPLY_FORM_NAME, 'Completion', { applicationStatus: 'Completed' });
+          A.trackForm('formComplete', APPLY_FORM_NAME, 'Lead', { applicationStatus: 'Completed' });
           A.pushEvent('productApplication', {
             eventInfo: {
               eventName: 'Product Application Submit',
@@ -114,7 +112,7 @@
             product: { id: product ? product.value : '' }
           });
         } else {
-          A.trackForm('formValidationError', APPLY_FORM_NAME, 'Form Validation', {
+          A.trackForm('formValidationError', APPLY_FORM_NAME, 'Lead', {
             applicationStatus: 'Pending',
             validationError: 'Required fields missing or invalid'
           });
@@ -127,7 +125,7 @@
       btn.addEventListener('click', function () {
         var card = btn.closest('.product-card');
         var productName = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : 'Product';
-        A.trackCTA('Learn More: ' + productName, 'Products', 'link', 'Product Clicks');
+        A.trackCTA('Learn More: ' + productName, 'Products');
       });
     });
   });

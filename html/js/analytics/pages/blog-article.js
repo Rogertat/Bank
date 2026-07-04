@@ -26,7 +26,7 @@
     /* 59 — Article body link clicks */
     document.querySelectorAll('.article-body a, article a').forEach(function (el) {
       el.addEventListener('click', function () {
-        A.trackCTA(el.textContent.trim(), 'Blog', 'link', 'Blog Clicks');
+        A.trackCTA(el.textContent.trim(), 'Blog');
       });
     });
 
@@ -44,6 +44,7 @@
         depths.forEach(function (d) {
           if (pct >= d && !fired[d]) {
             fired[d] = true;
+            A.trackScrollDepth(d);
             A.pushEvent('blogReadDepth', {
               eventInfo: {
                 eventName: 'Blog Read Depth',
@@ -65,7 +66,7 @@
     document.querySelectorAll('a[href*="blog.html"]').forEach(function (el) {
       if (el.closest('.main-nav')) return;
       el.addEventListener('click', function () {
-        A.trackCTA('Back to Blog', 'Blog', 'link', 'Navigation Clicks');
+        A.trackCTA('Back to Blog', 'Blog');
       });
     });
   });

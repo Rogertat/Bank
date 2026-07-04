@@ -5,23 +5,21 @@
   var A = window.XeraAnalytics;
   if (!A) return;
 
-  var CONTACT_FORM_NAME = 'Contact Us Form';
+  var CONTACT_FORM_NAME = 'Contact Form';
 
   A.onReady(function () {
     /* 46 — Contact form load */
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
-      A.trackForm('formLoad', CONTACT_FORM_NAME, 'Load', { applicationStatus: 'Pending' });
+      A.trackForm('formLoad', CONTACT_FORM_NAME, 'Lead', { applicationStatus: 'Pending' });
 
       var formStarted = false;
-      contactForm.querySelectorAll('input, select, textarea').forEach(function (field) {
-        field.addEventListener('focus', function () {
-          if (!formStarted) {
-            formStarted = true;
-            A.trackForm('formStart', CONTACT_FORM_NAME, 'Start', { applicationStatus: 'Completed' });
-          }
-        });
-      });
+      contactForm.addEventListener('focusin', function () {
+        if (!formStarted) {
+          formStarted = true;
+          A.trackForm('formStart', CONTACT_FORM_NAME, 'Lead', { applicationStatus: 'Pending' });
+        }
+      }, true);
 
       /* 47 — Contact form validation (success handled in main.js) */
     }
@@ -33,19 +31,8 @@
         var input = branchForm.querySelector('input');
         var term = input ? input.value.trim() : '';
         if (term) {
-          A.trackCTA('Branch Search', 'Branch Locator', 'button', 'Branch Locator');
-          A.pushEvent('branchSearch', {
-            eventInfo: {
-              eventName: 'Branch Search',
-              eventCategory: 'engagement',
-              eventAction: 'search',
-              eventLabel: term,
-              component: 'form',
-              placement: 'Branch Locator',
-              regionPath: A.getRegionPath()
-            },
-            search: { term: term }
-          });
+          A.trackCTA('Branch Search', 'Branch Locator');
+          A.trackSearch(term);
         }
       });
 
@@ -97,7 +84,7 @@
     /* 52 — FAQ inline links */
     document.querySelectorAll('#faqs a').forEach(function (el) {
       el.addEventListener('click', function () {
-        A.trackCTA(el.textContent.trim(), 'FAQs', 'link', 'Navigation Clicks');
+        A.trackCTA(el.textContent.trim(), 'FAQs');
       });
     });
 
@@ -118,7 +105,7 @@
     /* 54 — Hero call CTA */
     document.querySelectorAll('.page-hero a[href^="tel:"]').forEach(function (el) {
       el.addEventListener('click', function () {
-        A.trackCTA('Hero Call CTA', 'Hero', 'link', 'Contact Clicks');
+        A.trackCTA('Hero Call CTA', 'Hero');
       });
     });
   });
@@ -126,7 +113,7 @@
   /* Expose for main.js form complete callback */
   window.XeraContactAnalytics = {
     trackFormComplete: function () {
-      A.trackForm('formComplete', CONTACT_FORM_NAME, 'Completion', { applicationStatus: 'Completed' });
+      A.trackForm('formComplete', CONTACT_FORM_NAME, 'Lead', { applicationStatus: 'Completed' });
     }
   };
 })();

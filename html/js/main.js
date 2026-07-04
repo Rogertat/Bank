@@ -187,7 +187,7 @@
           navigateToSuggestion(match);
         } else if (term) {
           if (window.XeraAnalytics) {
-            window.XeraAnalytics.trackSearch('searcheswithoutResult', term);
+            window.XeraAnalytics.trackSearch(term);
           }
         }
       }
@@ -203,7 +203,7 @@
 
   function navigateToSuggestion(match) {
     if (window.XeraAnalytics) {
-      window.XeraAnalytics.trackSearch('searcheswithResult', match.label);
+      window.XeraAnalytics.trackSearch(match.label);
     }
     var parts = match.target.split('#');
     var page = parts[0];
@@ -362,7 +362,7 @@
           }, 5000);
         } else {
           if (window.XeraAnalytics) {
-            window.XeraAnalytics.trackForm('formValidationError', 'Contact Us Form', 'Form Validation', {
+            window.XeraAnalytics.trackForm('formValidationError', 'Contact Form', 'Lead', {
               applicationStatus: 'Pending',
               validationError: 'Required fields missing'
             });
