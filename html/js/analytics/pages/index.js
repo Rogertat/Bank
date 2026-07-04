@@ -8,18 +8,18 @@
   A.onReady(function () {
     /* 18 — Carousel previous */
     A.bindClick('.carousel-prev', function () {
-      A.trackCTA('Previous Slide', 'Banner', 'button', 'Carousel Navigation');
+      A.trackCTA('Previous Slide', 'Hero Banner');
     });
 
     /* 19 — Carousel next */
     A.bindClick('.carousel-next', function () {
-      A.trackCTA('Next Slide', 'Banner', 'button', 'Carousel Navigation');
+      A.trackCTA('Next Slide', 'Hero Banner');
     });
 
     /* 20-22 — Carousel dots */
     document.querySelectorAll('.carousel-dot').forEach(function (dot, index) {
       dot.addEventListener('click', function () {
-        A.trackCTA('Slide ' + (index + 1), 'Banner', 'button', 'Carousel Navigation');
+        A.trackCTA('Slide ' + (index + 1), 'Hero Banner');
       });
     });
 
@@ -37,25 +37,25 @@
 
     /* 24 — Idle toast close */
     A.bindClick('#idleToastClose', function () {
-      A.trackCTA('Close Idle Toast', 'Idle Toast', 'button', 'CTA Clicks');
+      A.trackCTA('Close Idle Toast', 'Idle Toast');
     });
 
     /* 25 — Idle toast WhatsApp */
     document.querySelectorAll('#idleToast a[href*="wa.me"]').forEach(function (el) {
       el.addEventListener('click', function () {
-        A.trackCTA('Idle Toast WhatsApp', 'Idle Toast', 'link', 'Contact Clicks');
+        A.trackCTA('Idle Toast WhatsApp', 'Idle Toast');
       });
     });
 
     /* 26 — Idle toast view products */
     A.bindClick('#idleViewProducts', function () {
-      A.trackCTA('View Products', 'Idle Toast', 'button', 'CTA Clicks');
+      A.trackCTA('View Products', 'Idle Toast');
     });
 
     /* 27 — Blog preview section view all */
     document.querySelectorAll('#blog-preview .btn-outline').forEach(function (el) {
       el.addEventListener('click', function () {
-        A.trackCTA('View All Articles', 'Blog', 'link', 'CTA Clicks');
+        A.trackCTA('View All Articles', 'Blog');
       });
     });
 

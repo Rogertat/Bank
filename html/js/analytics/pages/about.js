@@ -11,7 +11,7 @@
       card.addEventListener('click', function () {
         var name = card.querySelector('h3');
         var leaderName = name ? name.textContent.trim() : 'Unknown Leader';
-        A.trackCTA('View Profile: ' + leaderName, 'Leadership', 'button', 'Leadership Clicks');
+        A.trackCTA('View Profile: ' + leaderName, 'Leadership');
         A.pushEvent('leaderProfileView', {
           eventInfo: {
             eventName: 'Leader Profile View',

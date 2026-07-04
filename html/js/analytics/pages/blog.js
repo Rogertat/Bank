@@ -11,7 +11,7 @@
       el.addEventListener('click', function () {
         var card = el.closest('.blog-card');
         var title = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : 'Article';
-        A.trackCTA('Read More: ' + title, 'Blog', 'link', 'Blog Clicks');
+        A.trackCTA('Read More: ' + title, 'Blog');
         A.pushEvent('blogArticleClick', {
           eventInfo: {
             eventName: 'Blog Article Click',
@@ -56,7 +56,7 @@
     /* 57 — Blog tag filter clicks (if present) */
     document.querySelectorAll('.blog-tag').forEach(function (tag) {
       tag.addEventListener('click', function () {
-        A.trackCTA('Tag: ' + tag.textContent.trim(), 'Blog', 'link', 'Blog Clicks');
+        A.trackCTA('Tag: ' + tag.textContent.trim(), 'Blog');
       });
     });
   });
