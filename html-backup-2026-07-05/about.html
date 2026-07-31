@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://assets.adobedtm.com/de3a66fdc88b/c0862ab55be9/launch-db1a1049e36a-development.min.js" async></script>
+<script src="https://assets.adobedtm.com/de3a66fdc88b/5d6e16334639/launch-02d543d81593-development.min.js" async></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products &amp; Services — Xera Bank</title>
+  <title>About Us — Xera Bank</title>
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -16,12 +16,12 @@
       <a href="index.html" class="logo-link" aria-label="Xera Bank — Home">
         <img src="assets/logo.svg" alt="Xera Bank logo" width="160" height="40">
       </a>
-      <ul class="main-nav" role="navigation">
+      <ul class="main-nav" role="navigation" aria-label="Main navigation">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
         <li class="nav-dropdown">
           <button class="nav-dropdown-toggle" aria-haspopup="true">Products ▾</button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu">
             <li><a href="products.html#savings">Savings Account</a></li>
             <li><a href="products.html#current">Current Account</a></li>
             <li><a href="products.html#personal-loan">Loans</a></li>
@@ -32,7 +32,7 @@
         <li><a href="blog.html">Blog</a></li>
         <li class="nav-dropdown">
           <button class="nav-dropdown-toggle" aria-haspopup="true">Help &amp; Support ▾</button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" role="menu">
             <li><a href="contact.html#faqs">FAQs</a></li>
             <li><a href="contact.html#branch-locator">Branch Locator</a></li>
             <li><a href="contact.html">Contact Us</a></li>
@@ -51,7 +51,7 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </button>
           <div class="search-panel"><div class="search-panel-inner">
-            <input type="search" id="siteSearch" placeholder="Search products..." aria-label="Search">
+            <input type="search" id="siteSearch" placeholder="Search products, branches..." aria-label="Search">
             <ul class="search-suggestions"></ul>
           </div></div>
         </div>
@@ -64,131 +64,105 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1>Our Products &amp; Services</h1>
-      <p>Comprehensive retail banking solutions tailored for every stage of your financial journey.</p>
-      <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;">Get in Touch</a>
+      <h1>About Xera Bank</h1>
+      <p>Building financial confidence for over two million Indian families since 1998.</p>
+      <a href="products.html" class="btn btn-primary" style="margin-top:1.5rem;">View All Products</a>
     </div>
   </section>
 
   <section class="section">
+    <div class="container" style="max-width:800px;text-align:center;">
+      <div class="animate-on-scroll">
+        <h2 style="color:var(--color-navy);font-size:var(--font-size-3xl);margin-bottom:1.5rem;">Our Story</h2>
+        <p style="color:var(--color-text-muted);line-height:1.8;margin-bottom:1.25rem;">Founded in 1998 in Mumbai, Xera Bank began with a simple mission: make quality banking accessible to every Indian household. What started as a single branch has grown into a nationwide network of 450+ branches serving over 2 million customers.</p>
+        <p style="color:var(--color-text-muted);line-height:1.8;">Today, we combine the warmth of relationship banking with cutting-edge digital tools — so whether you visit us in person or bank from your phone, you always feel valued and secure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
     <div class="container">
-      <div class="cards-grid">
-        <div class="product-card animate-on-scroll" id="savings">
-          <div class="product-card-body">
-            <div class="product-icon">🏦</div>
-            <h3>Savings Account</h3>
-            <p>Earn up to 7.5% p.a. with zero minimum balance. Free debit card, UPI, and unlimited digital transfers included.</p>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-              <a href="products.html#savings" class="btn btn-outline btn-sm">Learn More</a>
-              <button class="btn btn-primary btn-sm" data-apply-modal data-product="savings">Apply Now</button>
-            </div>
-          </div>
+      <div class="section-header animate-on-scroll">
+        <h2>Our Mission &amp; Values</h2>
+        <p>Guided by integrity, innovation, and a genuine commitment to your financial wellbeing.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card animate-on-scroll">
+          <div class="value-icon">🎯</div>
+          <h3>Customer First</h3>
+          <p>Every product and policy is designed with your needs at the centre — not shareholder profits.</p>
         </div>
-
-        <div class="product-card animate-on-scroll" id="current">
-          <div class="product-card-body">
-            <div class="product-icon">💼</div>
-            <h3>Current Account</h3>
-            <p>Designed for professionals and businesses. Overdraft facility, bulk payments, and dedicated relationship manager.</p>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-              <a href="products.html#current" class="btn btn-outline btn-sm">Learn More</a>
-              <button class="btn btn-primary btn-sm" data-apply-modal data-product="current">Apply Now</button>
-            </div>
-          </div>
+        <div class="value-card animate-on-scroll">
+          <div class="value-icon">🔒</div>
+          <h3>Trust &amp; Transparency</h3>
+          <p>No hidden fees, no fine-print surprises. We believe honest banking builds lasting relationships.</p>
         </div>
-
-        <div class="product-card animate-on-scroll" id="personal-loan">
-          <div class="product-card-body">
-            <div class="product-icon">💰</div>
-            <h3>Personal Loan</h3>
-            <p>Instant approval up to ₹25 lakh. Rates from 10.5% p.a. No collateral required. Disbursal within 24 hours.</p>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-              <a href="products.html#personal-loan" class="btn btn-outline btn-sm">Learn More</a>
-              <button class="btn btn-primary btn-sm" data-apply-modal data-product="personal-loan">Apply Now</button>
-            </div>
-          </div>
+        <div class="value-card animate-on-scroll">
+          <div class="value-icon">🌱</div>
+          <h3>Community Impact</h3>
+          <p>We invest in financial literacy programmes across 200+ rural and semi-urban communities.</p>
         </div>
-
-        <div class="product-card animate-on-scroll" id="home-loan">
-          <div class="product-card-body">
-            <div class="product-icon">🏠</div>
-            <h3>Home Loan</h3>
-            <p>Competitive rates from 8.5% p.a. Flexible tenure up to 30 years. Special rates for women borrowers and first-time buyers.</p>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-              <a href="products.html#home-loan" class="btn btn-outline btn-sm">Learn More</a>
-              <button class="btn btn-primary btn-sm" data-apply-modal data-product="home-loan">Apply Now</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card animate-on-scroll" id="credit-card">
-          <div class="product-card-body">
-            <div class="product-icon">💳</div>
-            <h3>Credit Card</h3>
-            <p>Xera Rewards, Travel Plus, and Cashback cards. Up to 5% cashback, airport lounge access, and zero annual fee options.</p>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-              <a href="products.html#credit-card" class="btn btn-outline btn-sm">Learn More</a>
-              <button class="btn btn-primary btn-sm" data-apply-modal data-product="credit-card">Apply Now</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card animate-on-scroll" id="fixed-deposit">
-          <div class="product-card-body">
-            <div class="product-icon">📈</div>
-            <h3>Fixed Deposit</h3>
-            <p>Secure returns up to 7.8% p.a. Tenures from 7 days to 10 years. Senior citizen bonus of 0.5% additional interest.</p>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-              <a href="products.html#fixed-deposit" class="btn btn-outline btn-sm">Learn More</a>
-              <button class="btn btn-primary btn-sm" data-apply-modal data-product="fixed-deposit">Apply Now</button>
-            </div>
-          </div>
+        <div class="value-card animate-on-scroll">
+          <div class="value-icon">💡</div>
+          <h3>Innovation</h3>
+          <p>From UPI integration in 2017 to AI-powered fraud detection today, we stay ahead for you.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Apply Modal -->
-  <div class="modal-overlay" id="applyModal" role="dialog" aria-labelledby="applyTitle" aria-modal="true">
-    <div class="modal">
-      <button class="modal-close" data-modal-close aria-label="Close" type="button">&times;</button>
-      <h2 id="applyTitle">Express Interest</h2>
-      <p>Tell us about yourself and we'll connect you with a specialist within 24 hours.</p>
-      <form id="applyForm" action="#" novalidate>
-        <div class="form-group">
-          <label for="applyName">Full Name</label>
-          <input type="text" id="applyName" required>
-          <span class="form-error">This field is required</span>
+  <section class="section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Leadership Team</h2>
+        <p>Experienced professionals dedicated to your financial success.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card animate-on-scroll" data-leader-id="1" role="button" tabindex="0" aria-label="View profile of Arun Mehta, Managing Director and CEO">
+          <img src="assets/images/team/1.jpg" alt="" aria-hidden="true">
+          <div class="team-default"><h3>Arun Mehta</h3><p>Managing Director &amp; CEO</p></div>
+          <div class="team-hover-hint" aria-hidden="true"><span class="team-view-profile">View Profile</span></div>
         </div>
-        <div class="form-group">
-          <label for="applyEmail">Email Address</label>
-          <input type="email" id="applyEmail" required>
-          <span class="form-error">Enter a valid email</span>
+        <div class="team-card animate-on-scroll" data-leader-id="2" role="button" tabindex="0" aria-label="View profile of Priya Nair, Chief Financial Officer">
+          <img src="assets/images/team/2.jpg" alt="" aria-hidden="true">
+          <div class="team-default"><h3>Priya Nair</h3><p>Chief Financial Officer</p></div>
+          <div class="team-hover-hint" aria-hidden="true"><span class="team-view-profile">View Profile</span></div>
         </div>
-        <div class="form-group">
-          <label for="applyProduct">Product</label>
-          <select id="applyProduct" required>
-            <option value="">Select a product</option>
-            <option value="savings">Savings Account</option>
-            <option value="current">Current Account</option>
-            <option value="personal-loan">Personal Loan</option>
-            <option value="home-loan">Home Loan</option>
-            <option value="credit-card">Credit Card</option>
-            <option value="fixed-deposit">Fixed Deposit</option>
-          </select>
-          <span class="form-error">Please select a product</span>
+        <div class="team-card animate-on-scroll" data-leader-id="3" role="button" tabindex="0" aria-label="View profile of Rajiv Sharma, Chief Technology Officer">
+          <img src="assets/images/team/3.jpg" alt="" aria-hidden="true">
+          <div class="team-default"><h3>Rajiv Sharma</h3><p>Chief Technology Officer</p></div>
+          <div class="team-hover-hint" aria-hidden="true"><span class="team-view-profile">View Profile</span></div>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;">Submit</button>
-      </form>
+        <div class="team-card animate-on-scroll" data-leader-id="4" role="button" tabindex="0" aria-label="View profile of Sunita Rao, Chief Risk Officer">
+          <img src="assets/images/team/4.jpg" alt="" aria-hidden="true">
+          <div class="team-default"><h3>Sunita Rao</h3><p>Chief Risk Officer</p></div>
+          <div class="team-hover-hint" aria-hidden="true"><span class="team-view-profile">View Profile</span></div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Awards &amp; Recognition</h2>
+        <p>Industry recognition for excellence in retail banking and customer service.</p>
+      </div>
+      <div class="awards-grid">
+        <div class="award-item animate-on-scroll"><div class="award-icon">🏆</div><h4>Best Retail Bank India 2025</h4><p style="font-size:var(--font-size-xs);color:var(--color-text-muted);margin-top:0.25rem;">Banking Today Awards</p></div>
+        <div class="award-item animate-on-scroll"><div class="award-icon">⭐</div><h4>5-Star Customer Satisfaction</h4><p style="font-size:var(--font-size-xs);color:var(--color-text-muted);margin-top:0.25rem;">J.D. Power 2024</p></div>
+        <div class="award-item animate-on-scroll"><div class="award-icon">🔐</div><h4>Top Cybersecurity Bank</h4><p style="font-size:var(--font-size-xs);color:var(--color-text-muted);margin-top:0.25rem;">RBI Fintech Report 2025</p></div>
+        <div class="award-item animate-on-scroll"><div class="award-icon">🌿</div><h4>Green Banking Initiative</h4><p style="font-size:var(--font-size-xs);color:var(--color-text-muted);margin-top:0.25rem;">Sustainable Finance Council</p></div>
+      </div>
+    </div>
+  </section>
 
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="logo-link"><div class="logo-text">Xera<span>BANK</span></div></a>
-          <p>Xera Bank — trusted retail banking since 1998.</p>
+          <p>Xera Bank has been helping Indian families achieve their financial goals since 1998.</p>
         </div>
         <div class="footer-col"><h4>Products</h4><ul>
           <li><a href="products.html#savings">Savings Account</a></li>
@@ -198,18 +172,18 @@
         </ul></div>
         <div class="footer-col"><h4>Company</h4><ul>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="blog.html">Blog &amp; News</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul></div>
         <div class="footer-col"><h4>Newsletter</h4>
           <form id="newsletterForm" class="newsletter-form" action="#" novalidate>
             <div class="form-success" role="alert">Thank you! We'll get back to you within 24 hours.</div>
-            <input type="email" placeholder="Your email" required aria-label="Email">
+            <input type="email" placeholder="Your email address" required aria-label="Email">
             <button type="submit" class="btn btn-primary">Subscribe</button>
           </form>
         </div>
       </div>
-      <div class="footer-bottom"><p>&copy; 2026 Xera Bank. All rights reserved.</p></div>
+      <div class="footer-bottom"><p>&copy; 2026 Xera Bank. All rights reserved. | RBI Licensed | DICGC Insured</p></div>
     </div>
   </footer>
 
@@ -245,10 +219,6 @@
       });
     });
   </script>
-  <!-- xdm-accelerator R3 pilot (D-091): compiled flow + walkerOS 3.4.2 + WS1 aep-edge runtime -->
-  <script src="js/xdm/xdm-flow.js"></script>
-  <script src="js/xdm/walker-3.4.2.js"></script>
-  <script src="js/xdm/xdm-runtime.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://assets.adobedtm.com/de3a66fdc88b/c0862ab55be9/launch-db1a1049e36a-development.min.js" async></script>
+<script src="https://assets.adobedtm.com/de3a66fdc88b/5d6e16334639/launch-02d543d81593-development.min.js" async></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <script src="https://assets.adobedtm.com/4fa03d1212c6/040e774de1b7/launch-1efd76be0f63.min.js" async></script> -->
@@ -59,12 +59,7 @@
           </button>
           <div class="search-panel" role="search">
             <div class="search-panel-inner">
-              <!-- 2026-07-06: input wrapped in a real <form> so Enter fires a genuine submit
-                   event (search-tracking test target); onsubmit returns false so the page
-                   does not navigate. Backup: html-backup-2026-07-06/index.html -->
-              <form id="siteSearchForm" action="#" onsubmit="return false">
-                <input type="search" id="siteSearch" placeholder="Search products, branches..." aria-label="Search">
-              </form>
+              <input type="search" id="siteSearch" placeholder="Search products, branches..." aria-label="Search">
               <ul class="search-suggestions" role="listbox"></ul>
             </div>
           </div>
@@ -349,10 +344,6 @@
       });
     });
   </script>
-  <!-- xdm-accelerator R3 pilot (D-091): compiled flow + walkerOS 3.4.2 + WS1 aep-edge runtime -->
-  <script src="js/xdm/xdm-flow.js"></script>
-  <script src="js/xdm/walker-3.4.2.js"></script>
-  <script src="js/xdm/xdm-runtime.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

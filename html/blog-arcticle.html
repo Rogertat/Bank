@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://assets.adobedtm.com/de3a66fdc88b/5d6e16334639/launch-fd4df52da057-development.min.js" async></script>
+<script src="https://assets.adobedtm.com/de3a66fdc88b/c0862ab55be9/launch-db1a1049e36a-development.min.js" async></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Tag Manager -->
@@ -11,7 +11,7 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-MZ98B6J5');</script>
   <!-- End Google Tag Manager -->
-  <script src="https://assets.adobedtm.com/4fa03d1212c6/040e774de1b7/launch-7f68937d2e8f-development.min.js" async></script>
+  <!-- removed 2026-07-05: second Launch container raced ours over window._satellite, making alloy/AEP detection flaky -->
   <script defer src="https://uasdevanalytics.xerago.com/script.js" data-website-id="34a448a0-4b9b-406c-871d-d1c018dc7d09"></script>
   <title>5 Smart Ways to Grow Your Emergency Fund — Xera Bank Blog</title>
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
@@ -173,6 +173,10 @@
       });
     });
   </script>
+  <!-- xdm-accelerator R3 pilot (D-091): compiled flow + walkerOS 3.4.2 + WS1 aep-edge runtime -->
+  <script src="js/xdm/xdm-flow.js"></script>
+  <script src="js/xdm/walker-3.4.2.js"></script>
+  <script src="js/xdm/xdm-runtime.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -397,16 +397,7 @@
           var success = contactForm.querySelector('.form-success') ||
             document.getElementById('contactSuccess');
           if (success) success.classList.add('visible');
-          // Data-layer instrumentation (accelerator R3 pilot, D-091): the
-          // applicant's contact details ride IN the data layer — the retired
-          // xdm-bridge DOM peek moved here, where the site owns its variables.
-          // Pushed before reset(), so the field values are still set.
-          var completeForm = { name: formName, category: 'Completion', applicationStatus: 'Completed' };
-          var completeEmail = contactForm.querySelector('#email');
-          if (completeEmail && completeEmail.value) completeForm.email = String(completeEmail.value);
-          var completePhone = contactForm.querySelector('#phone');
-          if (completePhone && completePhone.value) completeForm.phone = String(completePhone.value);
-          pushEvent('formComplete', { form: completeForm });
+          pushEvent('formComplete', { form: { name: formName, category: 'Completion', applicationStatus: 'Completed' } });
           contactForm.reset();
           contactForm.querySelectorAll('.valid, .invalid').forEach(function (f) {
             f.classList.remove('valid', 'invalid');
